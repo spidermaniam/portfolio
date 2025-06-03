@@ -1,11 +1,12 @@
-
 import { useState, useEffect } from "react";
 import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
 import ExperienceSection from "../components/ExperienceSection";
+import ProjectsSection from "../components/ProjectsSection";
 import SkillsSection from "../components/SkillsSection";
 import ContactSection from "../components/ContactSection";
+import ScrollCounter from "../components/ScrollCounter";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -20,7 +21,7 @@ const Index = () => {
       const currentScrollY = window.scrollY;
       setScrollY(currentScrollY);
 
-      const sections = ["home", "about", "experience", "skills", "contact"];
+      const sections = ["home", "about", "experience", "projects", "skills", "contact"];
       const scrollPosition = currentScrollY + 200;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
@@ -140,10 +141,13 @@ const Index = () => {
         style={{ width: `${scrollProgress}%` }}
       />
       
-      {/* Section navigation dots */}
+      {/* Scroll Counter and Stats */}
+      <ScrollCounter />
+      
+      {/* Enhanced section navigation dots */}
       <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block">
-        <div className="flex flex-col space-y-4">
-          {["home", "about", "experience", "skills", "contact"].map((section) => (
+        <div className="flex flex-col space-y-6">
+          {["home", "about", "experience", "projects", "skills", "contact"].map((section) => (
             <button
               key={section}
               onClick={() => {
@@ -169,6 +173,9 @@ const Index = () => {
         </div>
         <div className="section-fade">
           <ExperienceSection />
+        </div>
+        <div className="section-fade">
+          <ProjectsSection />
         </div>
         <div className="section-fade">
           <SkillsSection />

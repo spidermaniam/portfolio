@@ -3,9 +3,14 @@ import { Mail, Linkedin } from "lucide-react";
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="section-padding">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="scroll-animate text-reveal">
+    <section id="contact" className="section-padding relative overflow-hidden">
+      {/* Enhanced background with halo effect */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-foreground rounded-full filter blur-3xl animate-pulse"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="scroll-animate text-reveal halo-effect">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-16 font-mono">
             Get In <span className="text-foreground">Touch</span>
           </h2>
@@ -20,7 +25,7 @@ const ContactSection = () => {
               <div className="scroll-animate">
                 <a
                   href="mailto:dhruvpuri00766@gmail.com"
-                  className="group bg-card p-8 rounded-lg border border-border hover:border-foreground transition-all duration-500 block hover-lift"
+                  className="group bg-card p-8 rounded-lg border border-border hover:border-foreground transition-all duration-500 block hover-lift halo-effect"
                 >
                   <div className="flex items-center justify-center w-16 h-16 bg-muted rounded-full mx-auto mb-6 group-hover:bg-foreground group-hover:text-background transition-colors">
                     <Mail className="w-8 h-8" />
@@ -36,7 +41,7 @@ const ContactSection = () => {
                   href="https://linkedin.com/in/dhruv-puri"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-card p-8 rounded-lg border border-border hover:border-foreground transition-all duration-500 block hover-lift"
+                  className="group bg-card p-8 rounded-lg border border-border hover:border-foreground transition-all duration-500 block hover-lift halo-effect"
                 >
                   <div className="flex items-center justify-center w-16 h-16 bg-muted rounded-full mx-auto mb-6 group-hover:bg-foreground group-hover:text-background transition-colors">
                     <Linkedin className="w-8 h-8" />

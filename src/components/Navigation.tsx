@@ -13,6 +13,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
     { id: "home", label: "Home" },
     { id: "about", label: "About" },
     { id: "experience", label: "Experience" },
+    { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
     { id: "contact", label: "Contact" },
   ];
@@ -33,7 +34,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
           <div className="flex-shrink-0">
             <button
               onClick={() => scrollToSection("home")}
-              className="text-xl font-bold gradient-text hover:opacity-80 transition-opacity"
+              className="text-xl font-bold text-foreground hover:opacity-80 transition-opacity font-mono"
             >
               Dhruv Puri
             </button>
@@ -46,13 +47,16 @@ const Navigation = ({ activeSection }: NavigationProps) => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 text-sm font-medium transition-colors hover:text-foreground ${
+                  className={`px-3 py-2 text-sm font-medium transition-all duration-300 font-mono relative ${
                     activeSection === item.id
-                      ? "text-foreground border-b-2 border-purple-500"
-                      : "text-muted-foreground"
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {item.label}
+                  {activeSection === item.id && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-foreground transform origin-left transition-all duration-300"></div>
+                  )}
                 </button>
               ))}
             </div>
@@ -77,7 +81,7 @@ const Navigation = ({ activeSection }: NavigationProps) => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left px-3 py-2 text-base font-medium transition-colors hover:bg-muted rounded-md ${
+                  className={`block w-full text-left px-3 py-2 text-base font-medium transition-colors hover:bg-muted rounded-md font-mono ${
                     activeSection === item.id
                       ? "text-foreground bg-muted"
                       : "text-muted-foreground"
