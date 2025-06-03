@@ -108,7 +108,7 @@ const Index = () => {
         const rect = element.getBoundingClientRect();
         const speed = 0.5;
         const yPos = -(currentScrollY * speed);
-        element.style.setProperty('--scroll-offset', `${yPos}px`);
+        (element as HTMLElement).style.setProperty('--scroll-offset', `${yPos}px`);
       });
     };
 
