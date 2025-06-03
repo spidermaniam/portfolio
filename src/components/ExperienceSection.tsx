@@ -45,35 +45,32 @@ const ExperienceSection = () => {
 
   return (
     <section id="experience" className="section-padding relative overflow-hidden">
-      {/* Background gradient with yellow theme */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-yellow-500/5 to-transparent"></div>
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="scroll-animate">
+        <div className="scroll-animate text-reveal">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-20 font-mono">
-            Professional <span className="gradient-text">Experience</span>
+            Professional <span className="text-foreground">Experience</span>
           </h2>
           
           <div className="relative">
             {/* Enhanced timeline line */}
-            <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-yellow-500 via-yellow-400 to-yellow-500 opacity-40"></div>
+            <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-border"></div>
             
-            <div className="space-y-16 stagger-animate">
+            <div className="space-y-16">
               {experiences.map((exp, index) => (
-                <div key={index} className={`scroll-animate flex items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+                <div key={index} className={`timeline-item flex items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
                   {/* Enhanced timeline dot */}
-                  <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full border-4 border-background shadow-lg shadow-yellow-500/30 z-10 pulse"></div>
+                  <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-foreground rounded-full border-4 border-background z-10"></div>
                   
-                  {/* Content with enhanced hover effects */}
+                  {/* Content */}
                   <div className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}>
-                    <div className="bg-card/50 backdrop-blur-sm p-8 rounded-xl border border-border/50 hover:border-yellow-500/30 transition-all duration-700 hover:shadow-2xl hover:shadow-yellow-500/10 group hover-lift">
+                    <div className="bg-card border border-border p-8 rounded-lg hover:shadow-xl transition-all duration-500 group hover-lift">
                       <div className="flex flex-col lg:items-start mb-6">
                         <div className="mb-4">
-                          <span className="inline-block px-4 py-2 bg-gradient-to-r from-yellow-500/20 to-yellow-600/20 text-yellow-300 rounded-full text-sm font-medium mb-3 font-mono border border-yellow-500/20">
+                          <span className="inline-block px-4 py-2 bg-muted text-muted-foreground rounded-full text-sm font-medium mb-3 font-mono">
                             {exp.period}
                           </span>
-                          <h3 className="text-xl font-semibold mb-2 group-hover:text-yellow-300 transition-colors font-mono">{exp.title}</h3>
-                          <p className="text-lg gradient-text font-medium font-mono">{exp.company}</p>
+                          <h3 className="text-xl font-semibold mb-2 group-hover:text-foreground transition-colors font-mono">{exp.title}</h3>
+                          <p className="text-lg text-foreground font-medium font-mono">{exp.company}</p>
                           <p className="text-sm text-muted-foreground font-mono">{exp.location}</p>
                         </div>
                       </div>
@@ -81,7 +78,7 @@ const ExperienceSection = () => {
                       <ul className="space-y-4">
                         {exp.achievements.map((achievement, achIndex) => (
                           <li key={achIndex} className="flex items-start group/item">
-                            <span className="w-2 h-2 bg-yellow-500 rounded-full mr-4 mt-2 flex-shrink-0 group-hover/item:bg-yellow-400 group-hover/item:scale-125 transition-all duration-300"></span>
+                            <span className="w-2 h-2 bg-foreground rounded-full mr-4 mt-2 flex-shrink-0 group-hover/item:scale-125 transition-all duration-300"></span>
                             <span className="text-muted-foreground leading-relaxed group-hover/item:text-foreground transition-colors duration-300 font-mono text-sm">{achievement}</span>
                           </li>
                         ))}
