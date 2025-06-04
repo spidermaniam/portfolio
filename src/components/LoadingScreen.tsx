@@ -36,25 +36,25 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
                   {/* Palm structure */}
                   <ellipse cx="640" cy="500" rx="180" ry="100" fill="url(#boneGradient)" className="palm-base"/>
                   
-                  {/* Index Finger - The animated one */}
+                  {/* Index Finger - The animated one with proper joint structure */}
                   <g id="index-finger" className="index-finger-group">
-                    {/* Metacarpal */}
-                    <g className="metacarpal-index">
+                    {/* Metacarpal (MC) - Base segment */}
+                    <g className="metacarpal-index" style={{ transformOrigin: '590px 575px', transformBox: 'fill-box' }}>
                       <rect x="580" y="450" width="20" height="125" rx="10" fill="url(#boneGradient)" className="bone-segment"/>
                     </g>
                     
-                    {/* Proximal Phalanx */}
-                    <g className="proximal-index" style={{ transformOrigin: '590px 450px' }}>
+                    {/* Proximal Phalanx (P1) */}
+                    <g className="proximal-index" style={{ transformOrigin: '590px 450px', transformBox: 'fill-box' }}>
                       <rect x="580" y="334" width="20" height="116" rx="10" fill="url(#boneGradient)" className="bone-segment"/>
                     </g>
                     
-                    {/* Middle Phalanx */}
-                    <g className="middle-index" style={{ transformOrigin: '590px 334px' }}>
+                    {/* Middle Phalanx (P2) */}
+                    <g className="middle-index" style={{ transformOrigin: '590px 334px', transformBox: 'fill-box' }}>
                       <rect x="580" y="241" width="18" height="93" rx="9" fill="url(#boneGradient)" className="bone-segment"/>
                     </g>
                     
-                    {/* Distal Phalanx */}
-                    <g className="distal-index" style={{ transformOrigin: '589px 241px' }}>
+                    {/* Distal Phalanx (P3) - Fingertip */}
+                    <g className="distal-index" style={{ transformOrigin: '589px 241px', transformBox: 'fill-box' }}>
                       <rect x="581" y="163" width="16" height="78" rx="8" fill="url(#boneGradient)" className="bone-segment"/>
                       <ellipse cx="589" cy="155" rx="10" ry="8" fill="url(#boneGradient)" className="fingertip"/>
                     </g>
@@ -94,14 +94,14 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
               <rect x="0" y="680" width="1280" height="40" fill="url(#tableGradient)" className="table-surface"/>
               
               {/* Dynamic Shadow under index finger */}
-              <ellipse cx="589" cy="680" rx="25" ry="8" fill="rgba(0,0,0,0.4)" className="finger-shadow"/>
+              <ellipse cx="589" cy="685" rx="25" ry="8" fill="rgba(0,0,0,0.4)" className="finger-shadow"/>
               
               {/* Gradients */}
               <defs>
                 <radialGradient id="boneGradient" cx="0.3" cy="0.3">
                   <stop offset="0%" stopColor="#f8f8f8"/>
-                  <stop offset="70%" stopColor="#eae3d0"/>
-                  <stop offset="100%" stopColor="#d4ccb8"/>
+                  <stop offset="50%" stopColor="#eae3d0"/>
+                  <stop offset="100%" stopColor="#9e9e9e"/>
                 </radialGradient>
                 
                 <linearGradient id="tableGradient" x1="0%" y1="0%" x2="0%" y2="100%">
