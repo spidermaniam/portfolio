@@ -87,15 +87,56 @@
     @apply py-20 lg:py-32;
   }
 
-  /* Custom animations */
-  @keyframes wiggle {
-    0%, 100% { transform: rotate(-2deg); }
-    50% { transform: rotate(2deg); }
+  /* Skeleton Hand Animation */
+  @keyframes fingerTap {
+    0%, 100% { 
+      transform: translateY(0); 
+    }
+    10% { 
+      transform: translateY(-12px); 
+    }
+    20% { 
+      transform: translateY(0); 
+    }
   }
 
-  .animate-wiggle {
-    animation: wiggle 1s ease-in-out infinite;
+  .skeleton-finger {
+    transform-origin: bottom center;
+    animation: fingerTap 1.3s ease-in-out infinite;
+    will-change: transform;
   }
+
+  .finger-1 { animation-delay: 0s; }
+  .finger-2 { animation-delay: 0.3s; }
+  .finger-3 { animation-delay: 0.6s; }
+  .finger-4 { animation-delay: 0.9s; }
+  .finger-5 { animation-delay: 1.2s; }
+  .finger-thumb { animation-delay: 0.15s; }
+
+  @keyframes shadowTap {
+    0%, 100% { 
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    10% { 
+      opacity: 0.1;
+      transform: scale(0.8);
+    }
+    20% { 
+      opacity: 0.3;
+      transform: scale(1);
+    }
+  }
+
+  .finger-shadow {
+    animation: shadowTap 1.3s ease-in-out infinite;
+  }
+
+  .shadow-1 { animation-delay: 0s; }
+  .shadow-2 { animation-delay: 0.3s; }
+  .shadow-3 { animation-delay: 0.6s; }
+  .shadow-4 { animation-delay: 0.9s; }
+  .shadow-5 { animation-delay: 1.2s; }
 
   /* Enhanced scroll-based animations */
   .scroll-animate {
@@ -240,5 +281,13 @@
   .project-card:hover {
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

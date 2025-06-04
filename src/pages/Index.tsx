@@ -6,6 +6,7 @@ import AboutSection from "../components/AboutSection";
 import ExperienceSection from "../components/ExperienceSection";
 import ProjectsSection from "../components/ProjectsSection";
 import SkillsSection from "../components/SkillsSection";
+import CertificationsSection from "../components/CertificationsSection";
 import ContactSection from "../components/ContactSection";
 import LoadingScreen from "../components/LoadingScreen";
 import CustomCursor from "../components/CustomCursor";
@@ -62,7 +63,7 @@ const Index = () => {
       });
 
       // Improved section detection
-      const sections = ["home", "about", "experience", "projects", "skills", "contact"];
+      const sections = ["home", "about", "experience", "projects", "skills", "certifications", "contact"];
       let newActiveSection = "home";
       
       for (const section of sections) {
@@ -138,7 +139,7 @@ const Index = () => {
       {/* Enhanced section navigation dots */}
       <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block">
         <div className="flex flex-col space-y-6">
-          {["home", "about", "experience", "projects", "skills", "contact"].map((section) => (
+          {["home", "about", "experience", "projects", "skills", "certifications", "contact"].map((section) => (
             <button
               key={section}
               onClick={() => {
@@ -170,6 +171,9 @@ const Index = () => {
         </div>
         <div className="section-fade">
           <SkillsSection />
+        </div>
+        <div className="section-fade">
+          <CertificationsSection />
         </div>
         <div className="section-fade">
           <ContactSection />
