@@ -87,239 +87,225 @@
     @apply py-20 lg:py-32;
   }
 
-  /* Skeleton Hand Animation - 3s Impatient Tapping ♪ ♪ ♪ ♩ */
+  /* Enhanced Skeleton Hand Animation - 3.27s Duration */
   .skeleton-hand-container {
     position: relative;
-    width: 400px;
-    height: 300px;
+    width: 320px;
+    height: 180px;
     margin: 0 auto;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
   }
 
-  .skeleton-hand-svg {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+  .hand-base {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 60px;
+    background: linear-gradient(145deg, #eae3d0, #d4ccb8);
+    border-radius: 20px 20px 8px 8px;
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.3),
+      inset 0 2px 4px rgba(255, 255, 255, 0.2);
   }
 
-  /* Wrist Group - Subtle tremor and jitter for impatience */
-  .wrist-group {
-    transform-origin: 294px 600px;
-    animation: wristTremor 3s infinite;
+  .palm-bone {
+    position: absolute;
+    background: linear-gradient(145deg, #eae3d0, #d4ccb8);
+    border-radius: 6px;
+    box-shadow: 
+      0 2px 6px rgba(0, 0, 0, 0.2),
+      inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  }
+
+  .palm-1 { width: 8px; height: 35px; left: 15px; top: 10px; }
+  .palm-2 { width: 8px; height: 40px; left: 30px; top: 5px; }
+  .palm-3 { width: 8px; height: 42px; left: 45px; top: 3px; }
+  .palm-4 { width: 8px; height: 38px; left: 60px; top: 7px; }
+  .palm-5 { width: 8px; height: 32px; left: 75px; top: 12px; }
+
+  .finger-container {
+    position: relative;
+    display: flex;
+    gap: 18px;
+    align-items: flex-end;
+    margin-bottom: 40px;
+  }
+
+  .finger {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: bottom center;
     will-change: transform;
   }
 
-  /* Palm Group - Micro tremor */
-  .palm-group {
-    animation: palmTremor 3s infinite;
-    will-change: transform;
-  }
-
-  /* Index finger joint segments - 4 taps with proper timing */
-  .metacarpal-index {
-    animation: metacarpalTap 3s cubic-bezier(0.34, 0.01, 0.47, 1.23) infinite;
-    will-change: transform;
-  }
-
-  .proximal-index {
-    animation: proximalTap 3s cubic-bezier(0.34, 0.01, 0.47, 1.23) infinite;
-    will-change: transform;
-  }
-
-  .middle-index {
-    animation: middleTap 3s cubic-bezier(0.34, 0.01, 0.47, 1.23) infinite;
-    will-change: transform;
-  }
-
-  .distal-index {
-    animation: distalTap 3s cubic-bezier(0.34, 0.01, 0.47, 1.23) infinite;
-    will-change: transform;
-  }
-
-  /* Dynamic shadow animation */
-  .finger-shadow {
-    animation: shadowTap 3s ease-in-out infinite;
-    will-change: transform, filter, opacity;
-  }
-
-  /* Keyframes for 4-tap impatient pattern ♪ ♪ ♪ ♩ */
-  
-  /* Wrist tremor and jitter (11 Hz micro-gestures) */
-  @keyframes wristTremor {
-    0%, 100% { transform: rotate(-166deg) translateY(0px); }
-    5% { transform: rotate(-164deg) translateY(-1px); }
-    10% { transform: rotate(-168deg) translateY(1px); }
-    13.3% { transform: rotate(-165deg) translateY(-2px); } /* Tap 1 prep */
-    16.7% { transform: rotate(-167deg) translateY(2px); } /* Tap 1 */
-    20% { transform: rotate(-166deg) translateY(0px); }
-    33.3% { transform: rotate(-165deg) translateY(-1px); } /* Tap 2 prep */
-    36.7% { transform: rotate(-167deg) translateY(1px); } /* Tap 2 */
-    40% { transform: rotate(-166deg) translateY(0px); }
-    53.3% { transform: rotate(-164deg) translateY(-2px); } /* Tap 3 prep */
-    56.7% { transform: rotate(-168deg) translateY(2px); } /* Tap 3 */
-    60% { transform: rotate(-166deg) translateY(0px); }
-    73.3% { transform: rotate(-163deg) translateY(-3px); } /* Tap 4 prep (longer) */
-    80% { transform: rotate(-169deg) translateY(3px); } /* Tap 4 (held) */
-    90% { transform: rotate(-166deg) translateY(0px); }
-    95% { transform: rotate(-165deg) translateY(-1px); }
-  }
-
-  /* Palm micro-tremor */
-  @keyframes palmTremor {
-    0%, 100% { transform: translateX(0px) translateY(0px); }
-    8% { transform: translateX(1px) translateY(-1px); }
-    16% { transform: translateX(-1px) translateY(1px); }
-    25% { transform: translateX(2px) translateY(0px); }
-    33% { transform: translateX(0px) translateY(-2px); }
-    41% { transform: translateX(-2px) translateY(1px); }
-    50% { transform: translateX(1px) translateY(2px); }
-    58% { transform: translateX(0px) translateY(-1px); }
-    66% { transform: translateX(-1px) translateY(0px); }
-    75% { transform: translateX(2px) translateY(-2px); }
-    83% { transform: translateX(-1px) translateY(1px); }
-    91% { transform: translateX(1px) translateY(0px); }
-  }
-
-  /* Metacarpal rotation (base joint) */
-  @keyframes metacarpalTap {
-    0%, 13.3%, 100% { transform: rotate(-8deg); }
-    16.7% { transform: rotate(15deg); } /* Tap 1 */
-    20% { transform: rotate(-3deg); }
-    
-    33.3% { transform: rotate(15deg); } /* Tap 2 */
-    36.7% { transform: rotate(-3deg); }
-    
-    53.3% { transform: rotate(15deg); } /* Tap 3 */
-    56.7% { transform: rotate(-3deg); }
-    
-    73.3% { transform: rotate(20deg); } /* Tap 4 (more pronounced) */
-    83.3% { transform: rotate(-5deg); }
-    90% { transform: rotate(-8deg); }
-  }
-
-  /* Proximal phalanx rotation (MCP joint) */
-  @keyframes proximalTap {
-    0%, 13.3%, 100% { transform: rotate(-5deg); }
-    16.7% { transform: rotate(23deg); } /* Tap 1: +28° total */
-    20% { transform: rotate(-2deg); }
-    
-    33.3% { transform: rotate(23deg); } /* Tap 2 */
-    36.7% { transform: rotate(-2deg); }
-    
-    53.3% { transform: rotate(23deg); } /* Tap 3 */
-    56.7% { transform: rotate(-2deg); }
-    
-    73.3% { transform: rotate(28deg); } /* Tap 4 (stronger) */
-    83.3% { transform: rotate(-8deg); }
-    90% { transform: rotate(-5deg); }
-  }
-
-  /* Middle phalanx rotation (PIP joint) */
-  @keyframes middleTap {
-    0%, 13.3%, 100% { transform: rotate(0deg); }
-    16.7% { transform: rotate(35deg) translateY(8px); } /* Tap 1 */
-    20% { transform: rotate(5deg) translateY(1px); }
-    
-    33.3% { transform: rotate(35deg) translateY(8px); } /* Tap 2 */
-    36.7% { transform: rotate(5deg) translateY(1px); }
-    
-    53.3% { transform: rotate(35deg) translateY(8px); } /* Tap 3 */
-    56.7% { transform: rotate(5deg) translateY(1px); }
-    
-    73.3% { transform: rotate(40deg) translateY(12px); } /* Tap 4 (deeper) */
-    83.3% { transform: rotate(8deg) translateY(2px); }
-    90% { transform: rotate(0deg) translateY(0px); }
-  }
-
-  /* Distal phalanx rotation (DIP joint) - Fingertip */
-  @keyframes distalTap {
-    0%, 13.3%, 100% { transform: rotate(0deg) translateY(0px); }
-    16.7% { transform: rotate(18deg) translateY(24px); } /* Tap 1: 24px amplitude */
-    20% { transform: rotate(3deg) translateY(3px); }
-    
-    33.3% { transform: rotate(18deg) translateY(24px); } /* Tap 2 */
-    36.7% { transform: rotate(3deg) translateY(3px); }
-    
-    53.3% { transform: rotate(18deg) translateY(24px); } /* Tap 3 */
-    56.7% { transform: rotate(3deg) translateY(3px); }
-    
-    73.3% { transform: rotate(22deg) translateY(28px); } /* Tap 4 (stronger, held longer) */
-    83.3% { transform: rotate(5deg) translateY(4px); }
-    90% { transform: rotate(0deg) translateY(0px); }
-  }
-
-  /* Shadow dynamics matching taps */
-  @keyframes shadowTap {
-    0%, 13.3%, 100% { 
-      opacity: 0.3;
-      transform: scale(1);
-      filter: blur(4px);
-    }
-    16.7% { 
-      opacity: 0.7;
-      transform: scale(1.4);
-      filter: blur(2px);
-    }
-    20% { 
-      opacity: 0.4;
-      transform: scale(1.1);
-      filter: blur(3px);
-    }
-    
-    33.3% { 
-      opacity: 0.7;
-      transform: scale(1.4);
-      filter: blur(2px);
-    }
-    36.7% { 
-      opacity: 0.4;
-      transform: scale(1.1);
-      filter: blur(3px);
-    }
-    
-    53.3% { 
-      opacity: 0.7;
-      transform: scale(1.4);
-      filter: blur(2px);
-    }
-    56.7% { 
-      opacity: 0.4;
-      transform: scale(1.1);
-      filter: blur(3px);
-    }
-    
-    73.3% { 
-      opacity: 0.8;
-      transform: scale(1.5);
-      filter: blur(1px);
-    }
-    83.3% { 
-      opacity: 0.5;
-      transform: scale(1.2);
-      filter: blur(2px);
-    }
-    90% { 
-      opacity: 0.3;
-      transform: scale(1);
-      filter: blur(4px);
-    }
-  }
-
-  /* Bone segments styling with proper gradients */
   .bone-segment {
-    stroke: rgba(158, 158, 158, 0.3);
-    stroke-width: 0.5;
+    width: 12px;
+    background: linear-gradient(145deg, #eae3d0, #d4ccb8);
+    border-radius: 6px;
+    margin-bottom: 2px;
+    box-shadow: 
+      0 2px 6px rgba(0, 0, 0, 0.25),
+      inset 0 1px 3px rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(220, 210, 190, 0.4);
   }
 
-  .fingertip {
-    stroke: rgba(158, 158, 158, 0.3);
-    stroke-width: 0.5;
+  .finger-index .proximal { height: 28px; }
+  .finger-index .middle { height: 24px; }
+  .finger-index .distal { height: 18px; }
+
+  .finger-middle .proximal { height: 32px; }
+  .finger-middle .middle { height: 26px; }
+  .finger-middle .distal { height: 20px; }
+
+  .finger-ring .proximal { height: 30px; }
+  .finger-ring .middle { height: 24px; }
+  .finger-ring .distal { height: 18px; }
+
+  .finger-pinky .proximal { height: 24px; }
+  .finger-pinky .middle { height: 20px; }
+  .finger-pinky .distal { height: 16px; }
+
+  .finger-shadow {
+    position: absolute;
+    bottom: -42px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 6px;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    transition: all 0.15s ease-out;
   }
 
   .table-surface {
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: linear-gradient(180deg, #3b3b3b 0%, #2f2f2f 100%);
+    box-shadow: 
+      0 -2px 8px rgba(0, 0, 0, 0.3),
+      inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  }
+
+  /* Sequential Finger Tapping Animation - 3.27s Total Duration */
+  @keyframes fingerTapIndex {
+    0%, 6.1%, 100% { 
+      transform: translateY(0); 
+    }
+    3% { 
+      transform: translateY(-15px); 
+    }
+  }
+
+  @keyframes fingerTapMiddle {
+    0%, 15.3%, 100% { 
+      transform: translateY(0); 
+    }
+    12.2% { 
+      transform: translateY(-15px); 
+    }
+  }
+
+  @keyframes fingerTapRing {
+    0%, 24.5%, 100% { 
+      transform: translateY(0); 
+    }
+    21.4% { 
+      transform: translateY(-15px); 
+    }
+  }
+
+  @keyframes fingerTapPinky {
+    0%, 33.6%, 100% { 
+      transform: translateY(0); 
+    }
+    30.6% { 
+      transform: translateY(-15px); 
+    }
+  }
+
+  @keyframes shadowTapIndex {
+    0%, 6.1%, 100% { 
+      opacity: 0.4;
+      transform: translateX(-50%) scale(1);
+    }
+    3% { 
+      opacity: 0.15;
+      transform: translateX(-50%) scale(0.6);
+    }
+  }
+
+  @keyframes shadowTapMiddle {
+    0%, 15.3%, 100% { 
+      opacity: 0.4;
+      transform: translateX(-50%) scale(1);
+    }
+    12.2% { 
+      opacity: 0.15;
+      transform: translateX(-50%) scale(0.6);
+    }
+  }
+
+  @keyframes shadowTapRing {
+    0%, 24.5%, 100% { 
+      opacity: 0.4;
+      transform: translateX(-50%) scale(1);
+    }
+    21.4% { 
+      opacity: 0.15;
+      transform: translateX(-50%) scale(0.6);
+    }
+  }
+
+  @keyframes shadowTapPinky {
+    0%, 33.6%, 100% { 
+      opacity: 0.4;
+      transform: translateX(-50%) scale(1);
+    }
+    30.6% { 
+      opacity: 0.15;
+      transform: translateX(-50%) scale(0.6);
+    }
+  }
+
+  .finger-index {
+    animation: fingerTapIndex 3.27s ease-in-out infinite;
+  }
+
+  .finger-middle {
+    animation: fingerTapMiddle 3.27s ease-in-out infinite;
+  }
+
+  .finger-ring {
+    animation: fingerTapRing 3.27s ease-in-out infinite;
+  }
+
+  .finger-pinky {
+    animation: fingerTapPinky 3.27s ease-in-out infinite;
+  }
+
+  .shadow-index {
+    animation: shadowTapIndex 3.27s ease-in-out infinite;
+  }
+
+  .shadow-middle {
+    animation: shadowTapMiddle 3.27s ease-in-out infinite;
+  }
+
+  .shadow-ring {
+    animation: shadowTapRing 3.27s ease-in-out infinite;
+  }
+
+  .shadow-pinky {
+    animation: shadowTapPinky 3.27s ease-in-out infinite;
   }
 
   /* Enhanced scroll-based animations */
@@ -514,33 +500,5 @@
     transform: translateY(0) scale(1);
     opacity: 1;
     z-index: 10;
-  }
-
-  /* Reduced motion accessibility */
-  @media (prefers-reduced-motion: reduce) {
-    .wrist-group,
-    .palm-group,
-    .metacarpal-index,
-    .proximal-index,
-    .middle-index,
-    .distal-index,
-    .finger-shadow {
-      animation-duration: 6s;
-      animation-timing-function: ease-in-out;
-    }
-    
-    .skeleton-hand-svg {
-      filter: none;
-    }
-    
-    /* Reduce amplitude for accessibility */
-    @keyframes distalTap {
-      0%, 13.3%, 100% { transform: rotate(0deg) translateY(0px); }
-      16.7%, 33.3%, 53.3% { transform: rotate(9deg) translateY(12px); }
-      20%, 36.7%, 56.7% { transform: rotate(2deg) translateY(2px); }
-      73.3% { transform: rotate(11deg) translateY(14px); }
-      83.3% { transform: rotate(3deg) translateY(2px); }
-      90% { transform: rotate(0deg) translateY(0px); }
-    }
   }
 }
