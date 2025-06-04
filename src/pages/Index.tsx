@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
@@ -6,23 +7,22 @@ import ExperienceSection from "../components/ExperienceSection";
 import ProjectsSection from "../components/ProjectsSection";
 import SkillsSection from "../components/SkillsSection";
 import ContactSection from "../components/ContactSection";
-import ScrollCounter from "../components/ScrollCounter";
+import LoadingScreen from "../components/LoadingScreen";
+import CustomCursor from "../components/CustomCursor";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Set dark mode by default
     document.documentElement.classList.add('dark');
+    // Hide default cursor
+    document.body.style.cursor = 'none';
 
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-
-      const sections = ["home", "about", "experience", "projects", "skills", "contact"];
-      const scrollPosition = currentScrollY + 200;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
       
@@ -30,7 +30,7 @@ const Index = () => {
       const progress = (currentScrollY / (documentHeight - windowHeight)) * 100;
       setScrollProgress(Math.min(progress, 100));
 
-      // Enhanced scroll-based animations with precise intersection detection
+      // Enhanced scroll-based animations
       const animateElements = document.querySelectorAll('.scroll-animate');
       animateElements.forEach((element) => {
         const rect = element.getBoundingClientRect();
@@ -61,29 +61,20 @@ const Index = () => {
         }
       });
 
-      // Timeline animations
-      const timelineItems = document.querySelectorAll('.timeline-item');
-      timelineItems.forEach((element) => {
-        const rect = element.getBoundingClientRect();
-        const isVisible = rect.top < windowHeight * 0.7;
-        
-        if (isVisible) {
-          element.classList.add('visible');
-        }
-      });
-
-      // Enhanced section detection with smoother transitions
-      let newActiveSection = activeSection;
+      // Improved section detection
+      const sections = ["home", "about", "experience", "projects", "skills", "contact"];
+      let newActiveSection = "home";
+      
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
-          const { offsetTop, offsetHeight } = element;
-          const sectionStart = offsetTop - windowHeight / 2;
-          const sectionEnd = offsetTop + offsetHeight - windowHeight / 2;
+          const rect = element.getBoundingClientRect();
+          const sectionTop = rect.top;
+          const sectionHeight = rect.height;
           
-          if (scrollPosition >= sectionStart && scrollPosition < sectionEnd) {
+          // Check if section is in the viewport center
+          if (sectionTop <= windowHeight / 2 && sectionTop + sectionHeight > windowHeight / 2) {
             newActiveSection = section;
-            break;
           }
         }
       }
@@ -92,7 +83,7 @@ const Index = () => {
         setActiveSection(newActiveSection);
       }
 
-      // Section fade effects with enhanced timing
+      // Section fade effects
       const sectionElements = document.querySelectorAll('.section-fade');
       sectionElements.forEach((element) => {
         const rect = element.getBoundingClientRect();
@@ -102,18 +93,9 @@ const Index = () => {
           element.classList.add('in-view');
         }
       });
-
-      // Parallax effects
-      const parallaxElements = document.querySelectorAll('.parallax-slow');
-      parallaxElements.forEach((element) => {
-        const rect = element.getBoundingClientRect();
-        const speed = 0.5;
-        const yPos = -(currentScrollY * speed);
-        (element as HTMLElement).style.setProperty('--scroll-offset', `${yPos}px`);
-      });
     };
 
-    // Throttled scroll handler for better performance
+    // Throttled scroll handler
     let ticking = false;
     const throttledScroll = () => {
       if (!ticking) {
@@ -125,24 +107,33 @@ const Index = () => {
       }
     };
 
-    window.addEventListener("scroll", throttledScroll, { passive: true });
-    handleScroll(); // Initial call
+    if (!isLoading) {
+      window.addEventListener("scroll", throttledScroll, { passive: true });
+      handleScroll(); // Initial call
+    }
     
     return () => {
       window.removeEventListener("scroll", throttledScroll);
     };
-  }, [activeSection]);
+  }, [activeSection, isLoading]);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
+      <CustomCursor />
+      
       {/* Enhanced scroll progress indicator */}
       <div 
         className="scroll-progress"
         style={{ width: `${scrollProgress}%` }}
       />
-      
-      {/* Scroll Counter and Stats */}
-      <ScrollCounter />
       
       {/* Enhanced section navigation dots */}
       <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block">

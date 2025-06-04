@@ -1,7 +1,37 @@
 
+import { useState, useEffect } from "react";
 import { Mail, Linkedin } from "lucide-react";
 
 const ContactSection = () => {
+  const [localTime, setLocalTime] = useState(new Date());
+  const [visitorCount, setVisitorCount] = useState(1247);
+
+  useEffect(() => {
+    // Update time every second
+    const timeInterval = setInterval(() => {
+      setLocalTime(new Date());
+    }, 1000);
+
+    // Simulate visitor count updates
+    const visitorInterval = setInterval(() => {
+      setVisitorCount(prev => prev + Math.floor(Math.random() * 3));
+    }, 30000);
+
+    return () => {
+      clearInterval(timeInterval);
+      clearInterval(visitorInterval);
+    };
+  }, []);
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString('en-US', {
+      hour12: false,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+  };
+
   return (
     <section id="contact" className="section-padding relative overflow-hidden">
       {/* Enhanced background with halo effect */}
@@ -53,10 +83,25 @@ const ContactSection = () => {
               </div>
             </div>
             
+            {/* Footer */}
             <div className="border-t border-border pt-8 scroll-animate text-reveal">
-              <p className="text-muted-foreground font-mono">
-                © 2024 Dhruv Puri. Built with React, TypeScript, and Tailwind CSS.
-              </p>
+              <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <p className="text-muted-foreground font-mono">
+                  © 2024 Dhruv Puri. Built with React, TypeScript, and Tailwind CSS.
+                </p>
+                
+                {/* Minimal stats */}
+                <div className="flex space-x-8 text-xs text-muted-foreground font-mono">
+                  <div>
+                    <span className="opacity-70">LOCAL TIME:</span>
+                    <span className="ml-2">{formatTime(localTime)}</span>
+                  </div>
+                  <div>
+                    <span className="opacity-70">VISITORS:</span>
+                    <span className="ml-2">{visitorCount.toLocaleString()}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -44,55 +44,60 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <section id="experience" className="section-padding relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="scroll-animate text-reveal">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-20 font-mono">
+    <section id="experience" className="relative min-h-screen">
+      {/* Section Header */}
+      <div className="sticky top-0 bg-background z-10 py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-6xl lg:text-8xl font-bold text-center font-mono">
             Professional <span className="text-foreground">Experience</span>
           </h2>
-          
-          <div className="relative">
-            {/* Enhanced timeline line */}
-            <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-px h-full bg-border"></div>
-            
-            <div className="space-y-16">
-              {experiences.map((exp, index) => (
-                <div key={index} className={`timeline-item flex items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-                  {/* Enhanced timeline dot */}
-                  <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-foreground rounded-full border-4 border-background z-10"></div>
-                  
-                  {/* Content */}
-                  <div className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}>
-                    <div className="bg-card border border-border p-8 rounded-lg hover:shadow-xl transition-all duration-500 group hover-lift">
-                      <div className="flex flex-col lg:items-start mb-6">
-                        <div className="mb-4">
-                          <span className="inline-block px-4 py-2 bg-muted text-muted-foreground rounded-full text-sm font-medium mb-3 font-mono">
-                            {exp.period}
-                          </span>
-                          <h3 className="text-xl font-semibold mb-2 group-hover:text-foreground transition-colors font-mono">{exp.title}</h3>
-                          <p className="text-lg text-foreground font-medium font-mono">{exp.company}</p>
-                          <p className="text-sm text-muted-foreground font-mono">{exp.location}</p>
-                        </div>
-                      </div>
-                      
-                      <ul className="space-y-4">
-                        {exp.achievements.map((achievement, achIndex) => (
-                          <li key={achIndex} className="flex items-start group/item">
-                            <span className="w-2 h-2 bg-foreground rounded-full mr-4 mt-2 flex-shrink-0 group-hover/item:scale-125 transition-all duration-300"></span>
-                            <span className="text-muted-foreground leading-relaxed group-hover/item:text-foreground transition-colors duration-300 font-mono text-sm">{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+        </div>
+      </div>
+
+      {/* Stacking Experience Cards */}
+      <div className="relative">
+        {experiences.map((exp, index) => (
+          <div
+            key={index}
+            className="sticky bg-background"
+            style={{ 
+              top: `${80 + index * 40}px`,
+              zIndex: experiences.length - index
+            }}
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+              <div className="bg-card border border-border rounded-lg p-8 hover:shadow-xl transition-all duration-500 group hover-lift">
+                <div className="grid lg:grid-cols-2 gap-8 items-start">
+                  {/* Left side - Job info */}
+                  <div>
+                    <span className="inline-block px-4 py-2 bg-muted text-muted-foreground rounded-full text-sm font-medium mb-4 font-mono">
+                      {exp.period}
+                    </span>
+                    <h3 className="text-3xl font-bold mb-2 group-hover:text-foreground transition-colors font-mono">
+                      {exp.title}
+                    </h3>
+                    <p className="text-xl text-foreground font-medium mb-2 font-mono">{exp.company}</p>
+                    <p className="text-muted-foreground font-mono">{exp.location}</p>
                   </div>
-                  
-                  {/* Spacer for timeline */}
-                  <div className="hidden lg:block w-2/12"></div>
+
+                  {/* Right side - Achievements */}
+                  <div>
+                    <ul className="space-y-4">
+                      {exp.achievements.map((achievement, achIndex) => (
+                        <li key={achIndex} className="flex items-start group/item">
+                          <span className="w-2 h-2 bg-foreground rounded-full mr-4 mt-2 flex-shrink-0 group-hover/item:scale-125 transition-all duration-300"></span>
+                          <span className="text-muted-foreground leading-relaxed group-hover/item:text-foreground transition-colors duration-300 font-mono text-sm">
+                            {achievement}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );
