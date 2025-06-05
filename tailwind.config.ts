@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -71,6 +70,10 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			transitionTimingFunction: {
+				'ease-out-cubic': 'cubic-bezier(0.22, 1, 0.36, 1)',
+				'ease-in-out-cubic': 'cubic-bezier(0.4, 0, 0.2, 1)',
 			},
 			keyframes: {
 				'accordion-down': {
