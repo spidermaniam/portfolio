@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+import { SkeletonHandLoader } from "./SkeletonHandLoader";
 
 const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
@@ -22,57 +23,9 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
   return (
     <div className="fixed inset-0 bg-background z-[9999] flex items-center justify-center">
       <div className="text-center">
-        {/* Enhanced Skeleton Hand Animation */}
-        <div className="mb-8 relative">
-          <div className="skeleton-hand-container">
-            {/* Hand Palm/Wrist Base */}
-            <div className="hand-base">
-              {/* Palm bones structure */}
-              <div className="palm-bone palm-1"></div>
-              <div className="palm-bone palm-2"></div>
-              <div className="palm-bone palm-3"></div>
-              <div className="palm-bone palm-4"></div>
-              <div className="palm-bone palm-5"></div>
-            </div>
-            
-            {/* Fingers with proper bone segments */}
-            <div className="finger-container">
-              {/* Index Finger */}
-              <div className="finger finger-index">
-                <div className="bone-segment proximal"></div>
-                <div className="bone-segment middle"></div>
-                <div className="bone-segment distal"></div>
-                <div className="finger-shadow shadow-index"></div>
-              </div>
-              
-              {/* Middle Finger */}
-              <div className="finger finger-middle">
-                <div className="bone-segment proximal"></div>
-                <div className="bone-segment middle"></div>
-                <div className="bone-segment distal"></div>
-                <div className="finger-shadow shadow-middle"></div>
-              </div>
-              
-              {/* Ring Finger */}
-              <div className="finger finger-ring">
-                <div className="bone-segment proximal"></div>
-                <div className="bone-segment middle"></div>
-                <div className="bone-segment distal"></div>
-                <div className="finger-shadow shadow-ring"></div>
-              </div>
-              
-              {/* Pinky Finger */}
-              <div className="finger finger-pinky">
-                <div className="bone-segment proximal"></div>
-                <div className="bone-segment middle"></div>
-                <div className="bone-segment distal"></div>
-                <div className="finger-shadow shadow-pinky"></div>
-              </div>
-            </div>
-            
-            {/* Table Surface */}
-            <div className="table-surface"></div>
-          </div>
+        {/* Skeleton Hand Animation */}
+        <div className="mb-8 flex justify-center">
+          <SkeletonHandLoader size={200} speed={1.4} />
         </div>
         
         {/* Loading text */}

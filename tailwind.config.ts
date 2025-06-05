@@ -116,6 +116,11 @@ export default {
 						opacity: '1',
 						transform: 'translateX(0)'
 					}
+				},
+				// Skeleton hand finger tapping animation
+				'tap': {
+					'0%, 20%, 100%': { transform: 'rotate(0deg)' },
+					'10%': { transform: 'rotate(-12deg)' },
 				}
 			},
 			animation: {
@@ -123,7 +128,12 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
 				'fade-in': 'fade-in 0.8s ease-out',
-				'slide-in-left': 'slide-in-left 0.6s ease-out'
+				'slide-in-left': 'slide-in-left 0.6s ease-out',
+				// Skeleton hand animation
+				'tap': 'tap 1.4s linear infinite'
+			},
+			dropShadow: {
+				'bone': '0 0 4px rgba(255,255,255,0.8)'
 			}
 		}
 	},
