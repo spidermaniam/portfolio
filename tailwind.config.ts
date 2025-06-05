@@ -117,10 +117,11 @@ export default {
 						transform: 'translateX(0)'
 					}
 				},
-				// Skeleton hand finger tapping animation - pixel perfect timing
+				// Block-bone finger tap animation - 20° dip with hold
 				'tap': {
-					'0%, 20%, 100%': { transform: 'rotate(0deg)' },
-					'10%': { transform: 'rotate(-12deg)' },
+					'0%, 18%, 100%': { transform: 'rotate(0deg)' },
+					'30%': { transform: 'rotate(-20deg)' },
+					'60%': { transform: 'rotate(0deg)' }
 				}
 			},
 			animation: {
@@ -129,11 +130,11 @@ export default {
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
 				'fade-in': 'fade-in 0.8s ease-out',
 				'slide-in-left': 'slide-in-left 0.6s ease-out',
-				// Skeleton hand animation - 1.4s loop
-				'tap': 'tap 1.4s linear infinite'
+				// Block-bone hand animation - 1.6s loop
+				'tap': 'tap 1.6s linear infinite'
 			},
 			dropShadow: {
-				'bone': '0 0 4px rgba(255,255,255,0.85)'
+				'bone': '0 0 4px rgba(31,41,55,0.45)'
 			}
 		}
 	},
@@ -141,7 +142,7 @@ export default {
 		require("tailwindcss-animate"),
 		({ addUtilities }) => {
 			addUtilities({
-				'.origin-knuckle': {
+				'.knuckle': {
 					transformBox: 'fill-box',
 					transformOrigin: 'bottom center',
 				},
