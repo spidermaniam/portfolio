@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -116,7 +117,7 @@ export default {
 						transform: 'translateX(0)'
 					}
 				},
-				// Skeleton hand finger tapping animation
+				// Skeleton hand finger tapping animation - pixel perfect timing
 				'tap': {
 					'0%, 20%, 100%': { transform: 'rotate(0deg)' },
 					'10%': { transform: 'rotate(-12deg)' },
@@ -128,13 +129,26 @@ export default {
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
 				'fade-in': 'fade-in 0.8s ease-out',
 				'slide-in-left': 'slide-in-left 0.6s ease-out',
-				// Skeleton hand animation
+				// Skeleton hand animation - 1.4s loop
 				'tap': 'tap 1.4s linear infinite'
 			},
 			dropShadow: {
-				'bone': '0 0 4px rgba(255,255,255,0.8)'
+				'bone': '0 0 4px rgba(255,255,255,0.85)'
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [
+		require("tailwindcss-animate"),
+		({ addUtilities }) => {
+			addUtilities({
+				'.origin-knuckle': {
+					transformBox: 'fill-box',
+					transformOrigin: 'bottom center',
+				},
+				'.vector-fixed': {
+					vectorEffect: 'non-scaling-stroke'
+				}
+			});
+		}
+	],
 } satisfies Config;
