@@ -1,5 +1,5 @@
 
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
@@ -60,16 +60,17 @@ const Card = ({
       onReadStart?.();
       
       if (!prefersReduced) {
-        // Start content reveal animation
-        const animation = maskProgress.animate(1, {
+        // Start content reveal animation using the animate function
+        const controls = animate(maskProgress, 1, {
           duration: 0.7,
           delay: 0.15,
-          ease: [0.22, 1, 0.36, 1]
+          ease: [0.22, 1, 0.36, 1],
+          onComplete: () => {
+            onReadComplete?.();
+          }
         });
         
-        animation.then(() => {
-          onReadComplete?.();
-        });
+        return () => controls.stop();
       } else {
         onReadComplete?.();
       }
