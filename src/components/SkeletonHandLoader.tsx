@@ -24,6 +24,7 @@ export const SkeletonHandLoader: React.FC<{
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
+        vectorEffect="non-scaling-stroke"
       />
       
       {/* Thumb - static */}
@@ -35,6 +36,7 @@ export const SkeletonHandLoader: React.FC<{
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
         />
         <path
           d="M150 200 C150 185 155 170 170 170 C185 170 190 185 190 200"
@@ -43,17 +45,19 @@ export const SkeletonHandLoader: React.FC<{
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
         />
       </g>
 
       {/* Index finger - animated */}
       <g
         id="finger-index"
-        className="origin-bottom"
+        className="finger"
         style={{ 
           transformBox: 'fill-box',
           transformOrigin: 'center bottom',
-          animation: `tap ${speed}s linear infinite`
+          animation: `tap ${speed}s linear infinite`,
+          animationDelay: '0s'
         }}
       >
         <path
@@ -63,6 +67,7 @@ export const SkeletonHandLoader: React.FC<{
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
         />
         {/* Finger segments */}
         <circle cx="235" cy="165" r="4" fill="#ffffff" opacity="0.7" />
@@ -73,7 +78,7 @@ export const SkeletonHandLoader: React.FC<{
       {/* Middle finger - animated */}
       <g
         id="finger-middle"
-        className="origin-bottom"
+        className="finger"
         style={{ 
           transformBox: 'fill-box',
           transformOrigin: 'center bottom',
@@ -88,6 +93,7 @@ export const SkeletonHandLoader: React.FC<{
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
         />
         <circle cx="265" cy="155" r="4" fill="#ffffff" opacity="0.7" />
         <circle cx="315" cy="95" r="4" fill="#ffffff" opacity="0.7" />
@@ -97,7 +103,7 @@ export const SkeletonHandLoader: React.FC<{
       {/* Ring finger - animated */}
       <g
         id="finger-ring"
-        className="origin-bottom"
+        className="finger"
         style={{ 
           transformBox: 'fill-box',
           transformOrigin: 'center bottom',
@@ -112,6 +118,7 @@ export const SkeletonHandLoader: React.FC<{
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
         />
         <circle cx="295" cy="165" r="4" fill="#ffffff" opacity="0.7" />
         <circle cx="345" cy="105" r="4" fill="#ffffff" opacity="0.7" />
@@ -121,7 +128,7 @@ export const SkeletonHandLoader: React.FC<{
       {/* Pinky finger - animated */}
       <g
         id="finger-pinky"
-        className="origin-bottom"
+        className="finger"
         style={{ 
           transformBox: 'fill-box',
           transformOrigin: 'center bottom',
@@ -136,6 +143,7 @@ export const SkeletonHandLoader: React.FC<{
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
+          vectorEffect="non-scaling-stroke"
         />
         <circle cx="325" cy="175" r="4" fill="#ffffff" opacity="0.7" />
         <circle cx="375" cy="125" r="4" fill="#ffffff" opacity="0.7" />
