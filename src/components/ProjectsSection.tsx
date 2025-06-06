@@ -6,7 +6,7 @@ const ProjectsSection = () => {
     {
       title: "CardHint",
       description: "A modern web application for card game hints and strategies. Built with React and TypeScript for an intuitive user experience.",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=450&fit=crop&crop=center",
       link: "https://cardhint.com/",
       github: "#",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
@@ -15,7 +15,7 @@ const ProjectsSection = () => {
     {
       title: "3D Printer HMI",
       description: "Full-stack Human Machine Interface for 3D printers with real-time monitoring and control capabilities.",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=450&fit=crop&crop=center",
       link: "#",
       github: "#",
       technologies: ["React", "Flask", "Python", "Moonraker API"],
@@ -24,7 +24,7 @@ const ProjectsSection = () => {
     {
       title: "Test Automation Framework",
       description: "Comprehensive automation framework for device testing with Python, reducing manual testing effort by 50%.",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop&crop=center",
       link: "#",
       github: "#",
       technologies: ["Python", "Selenium", "Pytest", "AWS"],
@@ -108,6 +108,14 @@ const ProjectsSection = () => {
             {projects.filter(p => !p.featured).map((project, index) => (
               <div key={index} className="scroll-animate">
                 <div className="project-card bg-card border border-border rounded-xl p-6 group h-full halo-effect">
+                  <div className="aspect-video bg-muted relative overflow-hidden rounded-lg mb-4">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                  
                   <h3 className="text-xl font-bold mb-3 group-hover:text-foreground transition-colors font-mono">
                     {project.title}
                   </h3>

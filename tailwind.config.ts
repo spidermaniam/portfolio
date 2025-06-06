@@ -117,18 +117,39 @@ export default {
 						transform: 'translateX(0)'
 					}
 				},
-				'tap-loop': {
+				// Anatomically correct finger tapping animations
+				'finger-tap-proximal': {
 					'0%': { transform: 'rotate(0deg)' },
 					'15%': { transform: 'rotate(-20deg)' },
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
-				'palm-dip': {
-					'0%': { transform: 'translateY(0) rotate(0deg)' },
+				'finger-tap-middle': {
+					'0%': { transform: 'rotate(0deg)' },
+					'15%': { transform: 'rotate(-10deg)' },
+					'45%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(0deg)' }
+				},
+				'finger-tap-distal': {
+					'0%': { transform: 'rotate(0deg)' },
+					'15%': { transform: 'rotate(-5deg)' },
+					'45%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(0deg)' }
+				},
+				// Palm motion with realistic dip and rotation
+				'palm-motion': {
+					'0%': { transform: 'translateY(0px) rotate(0deg)' },
 					'15%': { transform: 'translateY(2px) rotate(-2deg)' },
-					'45%': { transform: 'translateY(0) rotate(1deg)' },
-					'60%': { transform: 'translateY(0) rotate(0deg)' },
-					'100%': { transform: 'translateY(0) rotate(0deg)' }
+					'45%': { transform: 'translateY(0px) rotate(1deg)' },
+					'60%': { transform: 'translateY(0px) rotate(0deg)' },
+					'100%': { transform: 'translateY(0px) rotate(0deg)' }
+				},
+				// Thumb subtle response
+				'thumb-response': {
+					'0%': { transform: 'rotate(0deg)' },
+					'15%': { transform: 'rotate(-1deg)' },
+					'45%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(0deg)' }
 				}
 			},
 			animation: {
@@ -137,19 +158,30 @@ export default {
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
 				'fade-in': 'fade-in 0.8s ease-out',
 				'slide-in-left': 'slide-in-left 0.6s ease-out',
-				'index-prox': 'tap-loop 1.6s ease-in-out 0s infinite',
-				'index-mid': 'tap-loop 1.6s ease-in-out 0s infinite',
-				'index-dist': 'tap-loop 1.6s ease-in-out 0s infinite',
-				'middle-prox': 'tap-loop 1.6s ease-in-out 0.2s infinite',
-				'middle-mid': 'tap-loop 1.6s ease-in-out 0.2s infinite',
-				'middle-dist': 'tap-loop 1.6s ease-in-out 0.2s infinite',
-				'ring-prox': 'tap-loop 1.6s ease-in-out 0.4s infinite',
-				'ring-mid': 'tap-loop 1.6s ease-in-out 0.4s infinite',
-				'ring-dist': 'tap-loop 1.6s ease-in-out 0.4s infinite',
-				'pinky-prox': 'tap-loop 1.6s ease-in-out 0.6s infinite',
-				'pinky-mid': 'tap-loop 1.6s ease-in-out 0.6s infinite',
-				'pinky-dist': 'tap-loop 1.6s ease-in-out 0.6s infinite',
-				'palm': 'palm-dip 1.6s ease-in-out infinite'
+				
+				// Index finger (no delay)
+				'index-proximal': 'finger-tap-proximal 1.6s ease-in-out 0s infinite',
+				'index-middle': 'finger-tap-middle 1.6s ease-in-out 0s infinite',
+				'index-distal': 'finger-tap-distal 1.6s ease-in-out 0s infinite',
+				
+				// Middle finger (0.2s delay)
+				'middle-proximal': 'finger-tap-proximal 1.6s ease-in-out 0.2s infinite',
+				'middle-middle': 'finger-tap-middle 1.6s ease-in-out 0.2s infinite',
+				'middle-distal': 'finger-tap-distal 1.6s ease-in-out 0.2s infinite',
+				
+				// Ring finger (0.4s delay)
+				'ring-proximal': 'finger-tap-proximal 1.6s ease-in-out 0.4s infinite',
+				'ring-middle': 'finger-tap-middle 1.6s ease-in-out 0.4s infinite',
+				'ring-distal': 'finger-tap-distal 1.6s ease-in-out 0.4s infinite',
+				
+				// Pinky finger (0.6s delay)
+				'pinky-proximal': 'finger-tap-proximal 1.6s ease-in-out 0.6s infinite',
+				'pinky-middle': 'finger-tap-middle 1.6s ease-in-out 0.6s infinite',
+				'pinky-distal': 'finger-tap-distal 1.6s ease-in-out 0.6s infinite',
+				
+				// Palm and thumb
+				'palm': 'palm-motion 1.6s ease-in-out infinite',
+				'thumb': 'thumb-response 1.6s ease-in-out infinite'
 			},
 			dropShadow: {
 				'bone': '0 0 4px rgba(31,41,55,0.45)'
@@ -160,9 +192,8 @@ export default {
 		require("tailwindcss-animate"),
 		({ addUtilities }) => {
 			addUtilities({
-				'.knuckle': {
+				'.bone-segment': {
 					transformBox: 'fill-box',
-					transformOrigin: 'bottom center',
 				},
 				'.vector-fixed': {
 					vectorEffect: 'non-scaling-stroke'
