@@ -117,38 +117,40 @@ export default {
 						transform: 'translateX(0)'
 					}
 				},
-				// Anatomically correct finger tapping animations
+				// Anatomically correct finger tapping animations with proper joint articulation
 				'finger-tap-proximal': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-20deg)' },
+					'15%': { transform: 'rotate(-18deg)' },
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
 				'finger-tap-middle': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-10deg)' },
+					'15%': { transform: 'rotate(-12deg)' },
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
 				'finger-tap-distal': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-5deg)' },
+					'15%': { transform: 'rotate(-7deg)' },
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
-				// Palm motion with realistic dip and rotation
+				// Palm motion with compression and bounce
 				'palm-motion': {
-					'0%': { transform: 'translateY(0px) rotate(0deg)' },
-					'15%': { transform: 'translateY(2px) rotate(-2deg)' },
-					'45%': { transform: 'translateY(0px) rotate(1deg)' },
-					'60%': { transform: 'translateY(0px) rotate(0deg)' },
-					'100%': { transform: 'translateY(0px) rotate(0deg)' }
+					'0%': { transform: 'scaleY(1.0) translateY(0px) rotate(0deg)' },
+					'15%': { transform: 'scaleY(0.97) translateY(2px) rotate(-2deg)' },
+					'45%': { transform: 'scaleY(1.01) translateY(0px) rotate(1deg)' },
+					'60%': { transform: 'scaleY(1.0) translateY(0px) rotate(0deg)' },
+					'100%': { transform: 'scaleY(1.0) translateY(0px) rotate(0deg)' }
 				},
-				// Thumb subtle response
+				// Thumb subtle response every 2nd cycle
 				'thumb-response': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-1deg)' },
-					'45%': { transform: 'rotate(0deg)' },
+					'15%': { transform: 'rotate(-1.5deg)' },
+					'25%': { transform: 'rotate(-2deg)' },
+					'45%': { transform: 'rotate(0.5deg)' },
+					'60%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				}
 			},
@@ -159,29 +161,29 @@ export default {
 				'fade-in': 'fade-in 0.8s ease-out',
 				'slide-in-left': 'slide-in-left 0.6s ease-out',
 				
-				// Index finger (no delay)
+				// Index finger (default speed) - immediate start
 				'index-proximal': 'finger-tap-proximal 1.6s ease-in-out 0s infinite',
 				'index-middle': 'finger-tap-middle 1.6s ease-in-out 0s infinite',
 				'index-distal': 'finger-tap-distal 1.6s ease-in-out 0s infinite',
 				
-				// Middle finger (0.2s delay)
+				// Middle finger (slightly faster return) - 0.2s delay
 				'middle-proximal': 'finger-tap-proximal 1.6s ease-in-out 0.2s infinite',
-				'middle-middle': 'finger-tap-middle 1.6s ease-in-out 0.2s infinite',
-				'middle-distal': 'finger-tap-distal 1.6s ease-in-out 0.2s infinite',
+				'middle-middle': 'finger-tap-middle 1.6s ease-out 0.2s infinite',
+				'middle-distal': 'finger-tap-distal 1.6s ease-in 0.2s infinite',
 				
-				// Ring finger (0.4s delay)
+				// Ring finger (mixed easing) - 0.4s delay
 				'ring-proximal': 'finger-tap-proximal 1.6s ease-in-out 0.4s infinite',
-				'ring-middle': 'finger-tap-middle 1.6s ease-in-out 0.4s infinite',
-				'ring-distal': 'finger-tap-distal 1.6s ease-in-out 0.4s infinite',
+				'ring-middle': 'finger-tap-middle 1.6s ease-out 0.4s infinite',
+				'ring-distal': 'finger-tap-distal 1.6s ease-in 0.4s infinite',
 				
-				// Pinky finger (0.6s delay)
+				// Pinky finger (slower upstroke) - 0.6s delay
 				'pinky-proximal': 'finger-tap-proximal 1.6s ease-in-out 0.6s infinite',
-				'pinky-middle': 'finger-tap-middle 1.6s ease-in-out 0.6s infinite',
-				'pinky-distal': 'finger-tap-distal 1.6s ease-in-out 0.6s infinite',
+				'pinky-middle': 'finger-tap-middle 1.6s ease-out 0.6s infinite',
+				'pinky-distal': 'finger-tap-distal 1.6s ease-in 0.6s infinite',
 				
-				// Palm and thumb
+				// Palm and thumb with compression and slower thumb cycle
 				'palm': 'palm-motion 1.6s ease-in-out infinite',
-				'thumb': 'thumb-response 1.6s ease-in-out infinite'
+				'thumb': 'thumb-response 3.2s ease-in-out infinite'
 			},
 			dropShadow: {
 				'bone': '0 0 4px rgba(31,41,55,0.45)'

@@ -51,7 +51,7 @@ const ContactSection = () => {
               or just having a chat about technology and software development. Feel free to reach out!
             </p>
             
-            <div className="grid md:grid-cols-3 gap-8 mb-12 stagger-animate">
+            <div className="grid md:grid-cols-4 gap-8 mb-12 stagger-animate">
               <div className="scroll-animate">
                 <a
                   href="mailto:dhruvpuri00766@gmail.com"
@@ -68,7 +68,7 @@ const ContactSection = () => {
               
               <div className="scroll-animate">
                 <a
-                  href="https://linkedin.com/in/dhruv-puri"
+                  href="https://www.linkedin.com/in/dhruv-puri-c0d3r/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group bg-card p-8 rounded-lg border border-border hover:border-foreground transition-all duration-500 block hover-lift halo-effect"
@@ -78,7 +78,7 @@ const ContactSection = () => {
                   </div>
                   <h3 className="text-xl font-semibold mb-2 font-mono">LinkedIn</h3>
                   <p className="text-muted-foreground mb-4 font-mono">Connect with me professionally</p>
-                  <p className="text-foreground font-medium font-mono">linkedin.com/in/dhruv-puri</p>
+                  <p className="text-foreground font-medium font-mono">linkedin.com/in/dhruv-puri-c0d3r</p>
                 </a>
               </div>
 
