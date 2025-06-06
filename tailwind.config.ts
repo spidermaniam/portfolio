@@ -117,11 +117,11 @@ export default {
 						transform: 'translateX(0)'
 					}
 				},
-				// Block-bone finger tap animation - 20° dip with hold
 				'tap': {
-					'0%, 18%, 100%': { transform: 'rotate(0deg)' },
+					'0%': { transform: 'rotate(0deg)' },
 					'30%': { transform: 'rotate(-20deg)' },
-					'60%': { transform: 'rotate(0deg)' }
+					'60%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(0deg)' }
 				}
 			},
 			animation: {
@@ -130,8 +130,7 @@ export default {
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
 				'fade-in': 'fade-in 0.8s ease-out',
 				'slide-in-left': 'slide-in-left 0.6s ease-out',
-				// Block-bone hand animation - 1.6s loop
-				'tap': 'tap 1.6s linear infinite'
+				'tap': 'tap 1.6s ease-in-out infinite'
 			},
 			dropShadow: {
 				'bone': '0 0 4px rgba(31,41,55,0.45)'
