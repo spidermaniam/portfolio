@@ -34,6 +34,12 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="section-padding relative overflow-hidden">
+      {/* Enhanced background with purple halo effect */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-1/3 right-1/3 w-80 h-80 bg-purple-500 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/3 left-1/3 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl animate-pulse"></div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="scroll-animate text-reveal">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-20 font-mono">
