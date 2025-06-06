@@ -25,7 +25,7 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
       <div className="text-center">
         {/* Skeleton Hand Animation */}
         <div className="mb-8 flex justify-center">
-          <SkeletonHandLoader size={200} speed={1.4} />
+          <SkeletonHandLoader />
         </div>
         
         {/* Loading text */}

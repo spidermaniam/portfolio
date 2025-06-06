@@ -117,11 +117,24 @@ export default {
 						transform: 'translateX(0)'
 					}
 				},
-				'tap': {
+				'tap-down': {
 					'0%': { transform: 'rotate(0deg)' },
-					'30%': { transform: 'rotate(-20deg)' },
-					'60%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(-20deg)' }
+				},
+				'tap-up-fast': {
+					'0%': { transform: 'rotate(-20deg)' },
 					'100%': { transform: 'rotate(0deg)' }
+				},
+				'tap-up-slow': {
+					'0%': { transform: 'rotate(-20deg)' },
+					'100%': { transform: 'rotate(0deg)' }
+				},
+				'palm-dip': {
+					'0%': { transform: 'translateY(0) rotate(0deg)' },
+					'15%': { transform: 'translateY(2px) rotate(-2deg)' },
+					'45%': { transform: 'translateY(0) rotate(1deg)' },
+					'60%': { transform: 'translateY(0) rotate(0deg)' },
+					'100%': { transform: 'translateY(0) rotate(0deg)' }
 				}
 			},
 			animation: {
@@ -130,10 +143,25 @@ export default {
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
 				'fade-in': 'fade-in 0.8s ease-out',
 				'slide-in-left': 'slide-in-left 0.6s ease-out',
-				'tap': 'tap 1.6s ease-in-out infinite'
+				'index-prox': 'tap-down 0.12s ease-out 0s forwards, tap-up-fast 0.32s ease-in 0.12s forwards',
+				'index-mid': 'tap-down 0.12s ease-out 0s forwards, tap-up-fast 0.32s ease-in 0.12s forwards',
+				'index-dist': 'tap-down 0.12s ease-out 0s forwards, tap-up-fast 0.32s ease-in 0.12s forwards',
+				'middle-prox': 'tap-down 0.12s ease-out 0.08s forwards, tap-up-fast 0.32s ease-in 0.20s forwards',
+				'middle-mid': 'tap-down 0.12s ease-out 0.08s forwards, tap-up-fast 0.32s ease-in 0.20s forwards',
+				'middle-dist': 'tap-down 0.12s ease-out 0.08s forwards, tap-up-fast 0.32s ease-in 0.20s forwards',
+				'ring-prox': 'tap-down 0.14s ease-out 0.14s forwards, tap-up-slow 0.40s ease-in 0.28s forwards',
+				'ring-mid': 'tap-down 0.14s ease-out 0.14s forwards, tap-up-slow 0.40s ease-in 0.28s forwards',
+				'ring-dist': 'tap-down 0.14s ease-out 0.14s forwards, tap-up-slow 0.40s ease-in 0.28s forwards',
+				'pinky-prox': 'tap-down 0.16s ease-out 0.19s forwards, tap-up-slow 0.44s ease-in 0.35s forwards',
+				'pinky-mid': 'tap-down 0.16s ease-out 0.19s forwards, tap-up-slow 0.44s ease-in 0.35s forwards',
+				'pinky-dist': 'tap-down 0.16s ease-out 0.19s forwards, tap-up-slow 0.44s ease-in 0.35s forwards',
+				'palm': 'palm-dip 0.60s ease-out 0s infinite'
 			},
 			dropShadow: {
 				'bone': '0 0 4px rgba(31,41,55,0.45)'
+			},
+			animationIterationCount: {
+				'infinite': 'infinite'
 			}
 		}
 	},
@@ -147,6 +175,9 @@ export default {
 				},
 				'.vector-fixed': {
 					vectorEffect: 'non-scaling-stroke'
+				},
+				'.animation-infinite': {
+					animationIterationCount: 'infinite'
 				}
 			});
 		}
