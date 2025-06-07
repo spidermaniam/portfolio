@@ -51,7 +51,7 @@ const ContactSection = () => {
               or just having a chat about technology and software development. Feel free to reach out!
             </p>
             
-            <div className="grid md:grid-cols-4 gap-8 mb-12 stagger-animate">
+            <div className="grid md:grid-cols-3 gap-8 mb-12 stagger-animate">
               <div className="scroll-animate">
                 <a
                   href="mailto:dhruvpuri00766@gmail.com"

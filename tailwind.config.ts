@@ -117,7 +117,7 @@ export default {
 						transform: 'translateX(0)'
 					}
 				},
-				// Anatomically correct finger tapping animations with proper joint articulation
+				// Anatomically correct finger tapping animations
 				'finger-tap-proximal': {
 					'0%': { transform: 'rotate(0deg)' },
 					'15%': { transform: 'rotate(-18deg)' },
@@ -184,9 +184,6 @@ export default {
 				// Palm and thumb with compression and slower thumb cycle
 				'palm': 'palm-motion 1.6s ease-in-out infinite',
 				'thumb': 'thumb-response 3.2s ease-in-out infinite'
-			},
-			dropShadow: {
-				'bone': '0 0 4px rgba(31,41,55,0.45)'
 			}
 		}
 	},
