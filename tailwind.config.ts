@@ -117,39 +117,39 @@ export default {
 						transform: 'translateX(0)'
 					}
 				},
-				// Front-facing finger tapping animations (downward motion)
+				// Front-facing finger tapping animations (FIXED: downward motion)
 				'finger-tap-proximal': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(18deg)' },
+					'15%': { transform: 'rotate(-18deg)' }, // Negative for downward
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
 				'finger-tap-middle': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(12deg)' },
+					'15%': { transform: 'rotate(-12deg)' }, // Negative for downward
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
 				'finger-tap-distal': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(7deg)' },
+					'15%': { transform: 'rotate(-7deg)' }, // Negative for downward
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
-				// Palm motion with compression and bounce
+				// Palm motion with AMPLIFIED compression and bounce
 				'palm-motion': {
 					'0%': { transform: 'scaleY(1.0) translateY(0px) rotate(0deg)' },
-					'15%': { transform: 'scaleY(0.96) translateY(2px) rotate(-2deg)' },
-					'45%': { transform: 'scaleY(1.02) translateY(0px) rotate(1deg)' },
+					'15%': { transform: 'scaleY(0.93) translateY(4px) rotate(-4deg)' }, // More compression
+					'45%': { transform: 'scaleY(1.04) translateY(0px) rotate(2deg)' }, // More bounce
 					'60%': { transform: 'scaleY(1.0) translateY(0px) rotate(0deg)' },
 					'100%': { transform: 'scaleY(1.0) translateY(0px) rotate(0deg)' }
 				},
-				// Thumb subtle response every 2nd cycle
+				// Thumb subtle response every 2nd cycle (improved natural motion)
 				'thumb-response': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-2deg)' },
-					'30%': { transform: 'rotate(-1deg)' },
-					'60%': { transform: 'rotate(0.5deg)' },
+					'15%': { transform: 'rotate(-5deg)' },
+					'30%': { transform: 'rotate(-3deg)' },
+					'60%': { transform: 'rotate(1deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				}
 			},

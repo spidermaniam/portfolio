@@ -71,8 +71,7 @@ const ContactSection = () => {
                     <Mail className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2 font-mono">Email</h3>
-                  <p className="text-muted-foreground mb-4 font-mono">Let's discuss your project</p>
-                  <p className="text-foreground font-medium font-mono">dhruvpuri00766@gmail.com</p>
+                  <p className="text-muted-foreground font-mono">Let's discuss your project</p>
                 </div>
               </div>
               
@@ -85,8 +84,7 @@ const ContactSection = () => {
                     <Linkedin className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2 font-mono">LinkedIn</h3>
-                  <p className="text-muted-foreground mb-4 font-mono">Connect with me professionally</p>
-                  <p className="text-foreground font-medium font-mono">linkedin.com/in/dhruv-puri-c0d3r</p>
+                  <p className="text-muted-foreground font-mono">Connect with me professionally</p>
                 </div>
               </div>
 
@@ -99,8 +97,7 @@ const ContactSection = () => {
                     <Github className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2 font-mono">GitHub</h3>
-                  <p className="text-muted-foreground mb-4 font-mono">Check out my code</p>
-                  <p className="text-foreground font-medium font-mono">github.com/dhruvpuri</p>
+                  <p className="text-muted-foreground font-mono">Check out my code</p>
                 </div>
               </div>
             </div>
