@@ -4,7 +4,7 @@ import React from 'react';
 export const SkeletonHandLoader: React.FC = () => {
   return (
     <div className="flex flex-col items-center w-[220px]">
-      {/* Front-facing Skeleton Hand SVG matching reference image */}
+      {/* Front-facing Skeleton Hand SVG matching reference image exactly */}
       <svg viewBox="0 0 280 320" className="w-[220px] h-auto" xmlns="http://www.w3.org/2000/svg">
         {/* Enhanced bone gradient for depth and realism */}
         <defs>
