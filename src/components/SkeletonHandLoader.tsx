@@ -22,25 +22,25 @@ export const SkeletonHandLoader: React.FC = () => {
         </defs>
         
         {/* Palm with enhanced motion including compression */}
-        <g className="animate-palm" style={{ transformOrigin: '140px 250px' }}>
+        <g className="animate-palm" style={{ transformOrigin: '140px 240px' }}>
           
           {/* Index Finger - leftmost, 3 segments pointing upward */}
           <g id="index-finger">
             {/* Distal phalanx (tip) */}
-            <g className="animate-index-distal bone-segment" style={{ transformOrigin: '80px 85px' }}>
-              <rect x="70" y="60" width="20" height="25" rx="8" ry="8" 
+            <g className="animate-index-distal bone-segment" style={{ transformOrigin: '80px 80px' }}>
+              <rect x="70" y="50" width="20" height="30" rx="10" ry="10" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
             </g>
             {/* 2px gap */}
             {/* Middle phalanx */}
             <g className="animate-index-middle bone-segment" style={{ transformOrigin: '80px 115px' }}>
-              <rect x="68" y="87" width="24" height="28" rx="8" ry="8" 
+              <rect x="68" y="82" width="24" height="33" rx="10" ry="10" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
             </g>
             {/* 2px gap */}
             {/* Proximal phalanx */}
             <g className="animate-index-proximal bone-segment" style={{ transformOrigin: '80px 155px' }}>
-              <rect x="66" y="117" width="28" height="38" rx="10" ry="10" 
+              <rect x="66" y="117" width="28" height="38" rx="12" ry="12" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
             </g>
           </g>
@@ -48,20 +48,20 @@ export const SkeletonHandLoader: React.FC = () => {
           {/* Middle Finger - tallest finger */}
           <g id="middle-finger">
             {/* Distal phalanx (tip) */}
-            <g className="animate-middle-distal bone-segment" style={{ transformOrigin: '120px 75px' }}>
-              <rect x="110" y="45" width="20" height="30" rx="8" ry="8" 
+            <g className="animate-middle-distal bone-segment" style={{ transformOrigin: '120px 70px' }}>
+              <rect x="110" y="35" width="20" height="35" rx="10" ry="10" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
             </g>
             {/* 2px gap */}
             {/* Middle phalanx */}
             <g className="animate-middle-middle bone-segment" style={{ transformOrigin: '120px 110px' }}>
-              <rect x="108" y="77" width="24" height="33" rx="8" ry="8" 
+              <rect x="108" y="72" width="24" height="38" rx="10" ry="10" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
             </g>
             {/* 2px gap */}
             {/* Proximal phalanx */}
             <g className="animate-middle-proximal bone-segment" style={{ transformOrigin: '120px 155px' }}>
-              <rect x="106" y="112" width="28" height="43" rx="10" ry="10" 
+              <rect x="106" y="112" width="28" height="43" rx="12" ry="12" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
             </g>
           </g>
@@ -69,20 +69,20 @@ export const SkeletonHandLoader: React.FC = () => {
           {/* Ring Finger */}
           <g id="ring-finger">
             {/* Distal phalanx (tip) */}
-            <g className="animate-ring-distal bone-segment" style={{ transformOrigin: '160px 85px' }}>
-              <rect x="150" y="60" width="20" height="25" rx="8" ry="8" 
+            <g className="animate-ring-distal bone-segment" style={{ transformOrigin: '160px 80px' }}>
+              <rect x="150" y="50" width="20" height="30" rx="10" ry="10" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
             </g>
             {/* 2px gap */}
             {/* Middle phalanx */}
             <g className="animate-ring-middle bone-segment" style={{ transformOrigin: '160px 115px' }}>
-              <rect x="148" y="87" width="24" height="28" rx="8" ry="8" 
+              <rect x="148" y="82" width="24" height="33" rx="10" ry="10" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
             </g>
             {/* 2px gap */}
             {/* Proximal phalanx */}
             <g className="animate-ring-proximal bone-segment" style={{ transformOrigin: '160px 155px' }}>
-              <rect x="146" y="117" width="28" height="38" rx="10" ry="10" 
+              <rect x="146" y="117" width="28" height="38" rx="12" ry="12" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
             </g>
           </g>
@@ -90,31 +90,32 @@ export const SkeletonHandLoader: React.FC = () => {
           {/* Pinky Finger - smallest */}
           <g id="pinky-finger">
             {/* Distal phalanx (tip) */}
-            <g className="animate-pinky-distal bone-segment" style={{ transformOrigin: '200px 95px' }}>
-              <rect x="192" y="75" width="16" height="20" rx="6" ry="6" 
+            <g className="animate-pinky-distal bone-segment" style={{ transformOrigin: '200px 90px' }}>
+              <rect x="192" y="70" width="16" height="20" rx="8" ry="8" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
             </g>
             {/* 2px gap */}
             {/* Middle phalanx */}
-            <g className="animate-pinky-middle bone-segment" style={{ transformOrigin: '200px 120px' }}>
-              <rect x="190" y="97" width="20" height="23" rx="6" ry="6" 
+            <g className="animate-pinky-middle bone-segment" style={{ transformOrigin: '200px 115px' }}>
+              <rect x="190" y="92" width="20" height="23" rx="8" ry="8" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
             </g>
             {/* 2px gap */}
             {/* Proximal phalanx */}
-            <g className="animate-pinky-proximal bone-segment" style={{ transformOrigin: '200px 150px' }}>
-              <rect x="188" y="122" width="24" height="28" rx="8" ry="8" 
+            <g className="animate-pinky-proximal bone-segment" style={{ transformOrigin: '200px 145px' }}>
+              <rect x="188" y="117" width="24" height="28" rx="10" ry="10" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
             </g>
           </g>
           
-          {/* Thumb - on the right side, 2 segments */}
-          <g id="thumb" className="animate-thumb" style={{ transformOrigin: '235px 190px' }}>
+          {/* Thumb - on the right side, 2 segments, curving inward */}
+          <g id="thumb" className="animate-thumb bone-segment" style={{ transformOrigin: '235px 180px' }}>
             {/* Distal phalanx */}
-            <rect x="225" y="170" width="20" height="25" rx="8" ry="8" 
+            <rect x="225" y="160" width="20" height="25" rx="10" ry="10" 
                   fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
+            {/* 2px gap */}
             {/* Proximal phalanx */}
-            <rect x="223" y="197" width="24" height="30" rx="8" ry="8" 
+            <rect x="223" y="187" width="24" height="30" rx="10" ry="10" 
                   fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1.5" strokeOpacity="0.9" vectorEffect="non-scaling-stroke" />
           </g>
           

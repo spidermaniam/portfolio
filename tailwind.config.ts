@@ -117,34 +117,34 @@ export default {
 						transform: 'translateX(0)'
 					}
 				},
-				// Front-facing finger tapping animations (FIXED: downward motion)
+				// Skeleton hand finger tapping animations (downward motion)
 				'finger-tap-proximal': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-18deg)' }, // Negative for downward
+					'15%': { transform: 'rotate(-18deg)' }, // Downward rotation
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
 				'finger-tap-middle': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-12deg)' }, // Negative for downward
+					'15%': { transform: 'rotate(-12deg)' }, // Downward rotation
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
 				'finger-tap-distal': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-7deg)' }, // Negative for downward
+					'15%': { transform: 'rotate(-7deg)' }, // Downward rotation
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
-				// Palm motion with AMPLIFIED compression and bounce
+				// Palm compression and bounce motion
 				'palm-motion': {
 					'0%': { transform: 'scaleY(1.0) translateY(0px) rotate(0deg)' },
-					'15%': { transform: 'scaleY(0.93) translateY(4px) rotate(-4deg)' }, // More compression
-					'45%': { transform: 'scaleY(1.04) translateY(0px) rotate(2deg)' }, // More bounce
+					'15%': { transform: 'scaleY(0.93) translateY(4px) rotate(-4deg)' }, // Compression
+					'45%': { transform: 'scaleY(1.04) translateY(0px) rotate(2deg)' }, // Bounce
 					'60%': { transform: 'scaleY(1.0) translateY(0px) rotate(0deg)' },
 					'100%': { transform: 'scaleY(1.0) translateY(0px) rotate(0deg)' }
 				},
-				// Thumb subtle response every 2nd cycle (improved natural motion)
+				// Thumb subtle wiggle every 2 loops
 				'thumb-response': {
 					'0%': { transform: 'rotate(0deg)' },
 					'15%': { transform: 'rotate(-5deg)' },
@@ -160,25 +160,25 @@ export default {
 				'fade-in': 'fade-in 0.8s ease-out',
 				'slide-in-left': 'slide-in-left 0.6s ease-out',
 				
-				// Index finger (immediate start)
+				// Index finger (immediate start - 0s delay)
 				'index-proximal': 'finger-tap-proximal 1.6s ease-in-out 0s infinite',
 				'index-middle': 'finger-tap-middle 1.6s ease-in-out 0s infinite',
 				'index-distal': 'finger-tap-distal 1.6s ease-in-out 0s infinite',
 				
 				// Middle finger (0.2s delay)
 				'middle-proximal': 'finger-tap-proximal 1.6s ease-in-out 0.2s infinite',
-				'middle-middle': 'finger-tap-middle 1.6s ease-out 0.2s infinite',
-				'middle-distal': 'finger-tap-distal 1.6s ease-in 0.2s infinite',
+				'middle-middle': 'finger-tap-middle 1.6s ease-in-out 0.2s infinite',
+				'middle-distal': 'finger-tap-distal 1.6s ease-in-out 0.2s infinite',
 				
 				// Ring finger (0.4s delay)
 				'ring-proximal': 'finger-tap-proximal 1.6s ease-in-out 0.4s infinite',
-				'ring-middle': 'finger-tap-middle 1.6s ease-out 0.4s infinite',
-				'ring-distal': 'finger-tap-distal 1.6s ease-in 0.4s infinite',
+				'ring-middle': 'finger-tap-middle 1.6s ease-in-out 0.4s infinite',
+				'ring-distal': 'finger-tap-distal 1.6s ease-in-out 0.4s infinite',
 				
 				// Pinky finger (0.6s delay)
 				'pinky-proximal': 'finger-tap-proximal 1.6s ease-in-out 0.6s infinite',
-				'pinky-middle': 'finger-tap-middle 1.6s ease-out 0.6s infinite',
-				'pinky-distal': 'finger-tap-distal 1.6s ease-in 0.6s infinite',
+				'pinky-middle': 'finger-tap-middle 1.6s ease-in-out 0.6s infinite',
+				'pinky-distal': 'finger-tap-distal 1.6s ease-in-out 0.6s infinite',
 				
 				// Palm and thumb
 				'palm': 'palm-motion 1.6s ease-in-out infinite',
