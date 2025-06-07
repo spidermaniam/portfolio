@@ -117,40 +117,39 @@ export default {
 						transform: 'translateX(0)'
 					}
 				},
-				// Anatomically correct finger tapping animations
+				// Front-facing finger tapping animations (downward motion)
 				'finger-tap-proximal': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-18deg)' },
+					'15%': { transform: 'rotate(18deg)' },
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
 				'finger-tap-middle': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-12deg)' },
+					'15%': { transform: 'rotate(12deg)' },
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
 				'finger-tap-distal': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-7deg)' },
+					'15%': { transform: 'rotate(7deg)' },
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
 				// Palm motion with compression and bounce
 				'palm-motion': {
 					'0%': { transform: 'scaleY(1.0) translateY(0px) rotate(0deg)' },
-					'15%': { transform: 'scaleY(0.97) translateY(2px) rotate(-2deg)' },
-					'45%': { transform: 'scaleY(1.01) translateY(0px) rotate(1deg)' },
+					'15%': { transform: 'scaleY(0.96) translateY(2px) rotate(-2deg)' },
+					'45%': { transform: 'scaleY(1.02) translateY(0px) rotate(1deg)' },
 					'60%': { transform: 'scaleY(1.0) translateY(0px) rotate(0deg)' },
 					'100%': { transform: 'scaleY(1.0) translateY(0px) rotate(0deg)' }
 				},
 				// Thumb subtle response every 2nd cycle
 				'thumb-response': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-1.5deg)' },
-					'25%': { transform: 'rotate(-2deg)' },
-					'45%': { transform: 'rotate(0.5deg)' },
-					'60%': { transform: 'rotate(0deg)' },
+					'15%': { transform: 'rotate(-2deg)' },
+					'30%': { transform: 'rotate(-1deg)' },
+					'60%': { transform: 'rotate(0.5deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				}
 			},
@@ -161,27 +160,27 @@ export default {
 				'fade-in': 'fade-in 0.8s ease-out',
 				'slide-in-left': 'slide-in-left 0.6s ease-out',
 				
-				// Index finger (default speed) - immediate start
+				// Index finger (immediate start)
 				'index-proximal': 'finger-tap-proximal 1.6s ease-in-out 0s infinite',
 				'index-middle': 'finger-tap-middle 1.6s ease-in-out 0s infinite',
 				'index-distal': 'finger-tap-distal 1.6s ease-in-out 0s infinite',
 				
-				// Middle finger (slightly faster return) - 0.2s delay
+				// Middle finger (0.2s delay)
 				'middle-proximal': 'finger-tap-proximal 1.6s ease-in-out 0.2s infinite',
 				'middle-middle': 'finger-tap-middle 1.6s ease-out 0.2s infinite',
 				'middle-distal': 'finger-tap-distal 1.6s ease-in 0.2s infinite',
 				
-				// Ring finger (mixed easing) - 0.4s delay
+				// Ring finger (0.4s delay)
 				'ring-proximal': 'finger-tap-proximal 1.6s ease-in-out 0.4s infinite',
 				'ring-middle': 'finger-tap-middle 1.6s ease-out 0.4s infinite',
 				'ring-distal': 'finger-tap-distal 1.6s ease-in 0.4s infinite',
 				
-				// Pinky finger (slower upstroke) - 0.6s delay
+				// Pinky finger (0.6s delay)
 				'pinky-proximal': 'finger-tap-proximal 1.6s ease-in-out 0.6s infinite',
 				'pinky-middle': 'finger-tap-middle 1.6s ease-out 0.6s infinite',
 				'pinky-distal': 'finger-tap-distal 1.6s ease-in 0.6s infinite',
 				
-				// Palm and thumb with compression and slower thumb cycle
+				// Palm and thumb
 				'palm': 'palm-motion 1.6s ease-in-out infinite',
 				'thumb': 'thumb-response 3.2s ease-in-out infinite'
 			}

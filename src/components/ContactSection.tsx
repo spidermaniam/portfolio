@@ -32,6 +32,16 @@ const ContactSection = () => {
     });
   };
 
+  const handleCardClick = (url: string, text: string) => {
+    // Copy to clipboard
+    navigator.clipboard.writeText(text).catch(err => {
+      console.error('Failed to copy to clipboard:', err);
+    });
+    
+    // Route to link
+    window.open(url, '_blank');
+  };
+
   return (
     <section id="contact" className="section-padding relative overflow-hidden">
       {/* Enhanced background with halo effect */}
@@ -53,9 +63,9 @@ const ContactSection = () => {
             
             <div className="grid md:grid-cols-3 gap-8 mb-12 stagger-animate">
               <div className="scroll-animate">
-                <a
-                  href="mailto:dhruvpuri00766@gmail.com"
-                  className="group bg-card p-8 rounded-lg border border-border hover:border-foreground transition-all duration-500 block hover-lift halo-effect"
+                <div
+                  onClick={() => handleCardClick("mailto:dhruvpuri00766@gmail.com", "dhruvpuri00766@gmail.com")}
+                  className="group bg-card p-8 rounded-lg border border-border hover:border-foreground transition-all duration-500 cursor-pointer hover-lift halo-effect"
                 >
                   <div className="flex items-center justify-center w-16 h-16 bg-muted rounded-full mx-auto mb-6 group-hover:bg-foreground group-hover:text-background transition-colors">
                     <Mail className="w-8 h-8" />
@@ -63,15 +73,13 @@ const ContactSection = () => {
                   <h3 className="text-xl font-semibold mb-2 font-mono">Email</h3>
                   <p className="text-muted-foreground mb-4 font-mono">Let's discuss your project</p>
                   <p className="text-foreground font-medium font-mono">dhruvpuri00766@gmail.com</p>
-                </a>
+                </div>
               </div>
               
               <div className="scroll-animate">
-                <a
-                  href="https://www.linkedin.com/in/dhruv-puri-c0d3r/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-card p-8 rounded-lg border border-border hover:border-foreground transition-all duration-500 block hover-lift halo-effect"
+                <div
+                  onClick={() => handleCardClick("https://www.linkedin.com/in/dhruv-puri-c0d3r/", "https://www.linkedin.com/in/dhruv-puri-c0d3r/")}
+                  className="group bg-card p-8 rounded-lg border border-border hover:border-foreground transition-all duration-500 cursor-pointer hover-lift halo-effect"
                 >
                   <div className="flex items-center justify-center w-16 h-16 bg-muted rounded-full mx-auto mb-6 group-hover:bg-foreground group-hover:text-background transition-colors">
                     <Linkedin className="w-8 h-8" />
@@ -79,15 +87,13 @@ const ContactSection = () => {
                   <h3 className="text-xl font-semibold mb-2 font-mono">LinkedIn</h3>
                   <p className="text-muted-foreground mb-4 font-mono">Connect with me professionally</p>
                   <p className="text-foreground font-medium font-mono">linkedin.com/in/dhruv-puri-c0d3r</p>
-                </a>
+                </div>
               </div>
 
               <div className="scroll-animate">
-                <a
-                  href="https://github.com/dhruvpuri"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-card p-8 rounded-lg border border-border hover:border-foreground transition-all duration-500 block hover-lift halo-effect"
+                <div
+                  onClick={() => handleCardClick("https://github.com/dhruvpuri", "https://github.com/dhruvpuri")}
+                  className="group bg-card p-8 rounded-lg border border-border hover:border-foreground transition-all duration-500 cursor-pointer hover-lift halo-effect"
                 >
                   <div className="flex items-center justify-center w-16 h-16 bg-muted rounded-full mx-auto mb-6 group-hover:bg-foreground group-hover:text-background transition-colors">
                     <Github className="w-8 h-8" />
@@ -95,7 +101,7 @@ const ContactSection = () => {
                   <h3 className="text-xl font-semibold mb-2 font-mono">GitHub</h3>
                   <p className="text-muted-foreground mb-4 font-mono">Check out my code</p>
                   <p className="text-foreground font-medium font-mono">github.com/dhruvpuri</p>
-                </a>
+                </div>
               </div>
             </div>
             
