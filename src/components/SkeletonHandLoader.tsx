@@ -58,7 +58,7 @@ export const SkeletonHandLoader: React.FC = () => {
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1" strokeOpacity="0.7" />
             </g>
             {/* Distal phalanx - tapered tip */}
-            <g className="animate-middle-distal bone-segment" style={{ transformOrigin: '145px 202px" }}>
+            <g className="animate-middle-distal bone-segment" style={{ transformOrigin: '145px 202px' }}>
               <path d="M135 184 Q135 184 137 184 L153 184 Q155 184 155 184 L155 215 Q155 220 150 223 Q145 225 145 225 Q140 223 135 220 L135 184 Z" 
                     fill="url(#boneShade)" stroke="#2a2a2a" strokeWidth="1" strokeOpacity="0.7" />
             </g>
