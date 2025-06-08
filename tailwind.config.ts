@@ -117,38 +117,39 @@ export default {
 						transform: 'translateX(0)'
 					}
 				},
-				// Natural finger tapping animations - each segment bends from its joint
+				// Enhanced finger tapping animations with natural joint bending
 				'finger-tap-proximal': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-18deg)' }, // Natural downward bend
+					'15%': { transform: 'rotate(-18deg)' }, // Strong bend at knuckle
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
 				'finger-tap-middle': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-12deg)' }, // Secondary bend
+					'15%': { transform: 'rotate(-12deg)' }, // Medium bend at middle joint
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
 				'finger-tap-distal': {
 					'0%': { transform: 'rotate(0deg)' },
-					'15%': { transform: 'rotate(-6deg)' }, // Tip bend
+					'15%': { transform: 'rotate(-6deg)' }, // Subtle tip bend
 					'45%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				},
-				// Palm compression and weight motion - matches reference frames
+				// Enhanced palm compression with more dramatic bounce
 				'palm-motion': {
 					'0%': { transform: 'scaleY(1) translateY(0) rotate(0deg)' },
-					'15%': { transform: 'scaleY(0.92) translateY(6px) rotate(-3deg)' }, // Compression with weight
-					'45%': { transform: 'scaleY(1.05) rotate(2deg)' }, // Bounce back
+					'15%': { transform: 'scaleY(0.88) translateY(8px) rotate(-4deg)' }, // Stronger compression
+					'45%': { transform: 'scaleY(1.08) translateY(-2px) rotate(3deg)' }, // Bigger bounce back
 					'60%': { transform: 'scaleY(1) translateY(0) rotate(0deg)' },
 					'100%': { transform: 'scaleY(1) translateY(0) rotate(0deg)' }
 				},
-				// Thumb subtle response every 2 loops - natural twitch
+				// Thumb twitch animation - subtle but noticeable
 				'thumb-response': {
 					'0%': { transform: 'rotate(0deg)' },
 					'15%': { transform: 'rotate(-5deg)' },
 					'40%': { transform: 'rotate(2deg)' },
+					'70%': { transform: 'rotate(-1deg)' },
 					'100%': { transform: 'rotate(0deg)' }
 				}
 			},
@@ -179,7 +180,7 @@ export default {
 				'pinky-middle': 'finger-tap-middle 1.6s ease-in-out 0.6s infinite',
 				'pinky-distal': 'finger-tap-distal 1.6s ease-in-out 0.6s infinite',
 				
-				// Palm and thumb motion
+				// Enhanced palm and thumb motion
 				'palm': 'palm-motion 1.6s ease-in-out infinite',
 				'thumb': 'thumb-response 3.2s ease-in-out infinite'
 			}
