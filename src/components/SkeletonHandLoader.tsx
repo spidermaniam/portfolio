@@ -1,31 +1,28 @@
+// SkeletonHandLoader.tsx
+import React from "react";
 
-import React from 'react';
-
-interface SkeletonHandLoaderProps {
-  size?: number;
+interface Props {
   label?: string;
-  progress?: number;
+  fullscreen?: boolean;
 }
 
-export const SkeletonHandLoader: React.FC<SkeletonHandLoaderProps> = ({ 
-  size = 220, 
-  label = "Loading animation",
-  progress = 40
+export const SkeletonHandLoader: React.FC<Props> = ({
+  label = "Loading…",
+  fullscreen = false,
 }) => {
   return (
-    <div className="flex flex-col items-center space-y-4" style={{ width: `${size}px` }}>
-      <img 
-        src="https://i.postimg.cc/R0rwLV2n/loading2-2d2e3a.webp" 
+    <div
+      role="status"
+      aria-label={label}
+      className={`flex items-center justify-center ${
+        fullscreen ? "fixed inset-0 z-50 backdrop-blur-md" : ""
+      }`}
+    >
+      <img
+        src="/images/loading-hand.webp"
         alt={label}
-        aria-label={label}
-        className="w-full h-auto"
+        className="w-full max-w-md h-auto select-none pointer-events-none"
       />
-      <div className="w-full h-2 bg-[#2e2e2e] rounded-full overflow-hidden">
-        <div 
-          className="h-full bg-[#d3d3d3] transition-all duration-300 ease-out"
-          style={{ width: `${progress}%` }}
-        />
-      </div>
     </div>
   );
 };
