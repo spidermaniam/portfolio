@@ -26,12 +26,12 @@ const NeuralNetworkLoader = () => {
           },
         },
         particles: {
-          color: { value: ["#ffffff", "#cccccc", "#999999"] },
+          color: { value: ["#ffffff", "#a7c7e7", "#89aae6"] },
           links: {
-            color: "#ffffff",
+            color: "#d1d5db",
             distance: 92,
             enable: true,
-            opacity: 0.15,
+            opacity: 0.1,
             width: 1,
             triangles: {
               enable: true,
@@ -42,7 +42,7 @@ const NeuralNetworkLoader = () => {
           collisions: { enable: false },
           move: {
             enable: true,
-            speed: 3.2,
+            speed: 2,
             direction: "none",
             outModes: "bounce",
             straight: false,
@@ -57,23 +57,23 @@ const NeuralNetworkLoader = () => {
               rotateY: 1121,
             },
           },
-          number: { value: 135, density: { enable: true, area: 1200 } },
+          number: { value: 100, density: { enable: true, area: 1200 } },
           opacity: {
-            value: { min: 0.24, max: 0.96 },
+            value: { min: 0.2, max: 0.8 },
             animation: {
               enable: true,
-              speed: 4.4,
+              speed: 3,
               sync: false,
             },
           },
           shape: {
-            type: ["circle", "triangle", "edge", "polygon"],
+            type: "circle",
           },
           size: {
-            value: { min: 1, max: 8 },
+            value: { min: 1, max: 5 },
             animation: {
               enable: true,
-              speed: 6,
+              speed: 4,
               sync: false,
             },
           },
@@ -105,4 +105,3 @@ const NeuralNetworkLoader = () => {
 };
 
 export default NeuralNetworkLoader;
-
