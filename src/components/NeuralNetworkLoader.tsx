@@ -17,28 +17,37 @@ const NeuralNetworkLoader = () => {
           color: { value: "transparent" },
         },
         fullScreen: false,
-        fpsLimit: 120,
+        fpsLimit: 144,
         interactivity: {
           events: {
             onHover: {
-              enable: false,
+              enable: true,
+              mode: "attract",
             },
             resize: true,
+          },
+          modes: {
+            attract: {
+              distance: 150,
+              duration: 0.4,
+              factor: 5,
+            },
           },
         },
         particles: {
           color: { 
-            value: ["#3b82f6", "#8b5cf6", "#06b6d4", "#10b981"] 
+            value: ["#00d4ff", "#00ff88", "#ff6b35", "#8b5cf6", "#f59e0b", "#ef4444"] 
           },
           links: {
-            color: "#3b82f6",
-            distance: 120,
+            color: "#00d4ff",
+            distance: 100,
             enable: true,
-            opacity: 0.15,
-            width: 1,
+            opacity: 0.3,
+            width: 1.5,
             triangles: {
               enable: true,
-              opacity: 0.02,
+              opacity: 0.05,
+              color: "#8b5cf6",
             },
           },
           collisions: {
@@ -46,54 +55,68 @@ const NeuralNetworkLoader = () => {
           },
           move: {
             enable: true,
-            speed: 1.2,
+            speed: 2.5,
             direction: "none",
-            outModes: "out",
+            outModes: "bounce",
             straight: false,
             trail: {
               enable: true,
-              length: 3,
-              fillColor: "#1e293b",
+              length: 5,
+              fillColor: "#0f172a",
+            },
+            attract: {
+              enable: true,
+              rotateX: 600,
+              rotateY: 1200,
             },
           },
           number: {
-            value: 60,
+            value: 80,
             density: {
               enable: true,
-              area: 1000,
+              area: 800,
             },
           },
           opacity: {
-            value: { min: 0.2, max: 0.8 },
-            animation: {
-              enable: true,
-              speed: 2,
-              sync: false,
-            },
-          },
-          shape: {
-            type: ["circle", "triangle"],
-          },
-          size: {
-            value: { min: 1, max: 4 },
+            value: { min: 0.3, max: 0.9 },
             animation: {
               enable: true,
               speed: 3,
               sync: false,
             },
           },
+          shape: {
+            type: ["circle", "triangle", "square"],
+          },
+          size: {
+            value: { min: 1, max: 6 },
+            animation: {
+              enable: true,
+              speed: 4,
+              sync: false,
+            },
+          },
           life: {
             duration: {
               sync: false,
-              value: 3,
+              value: 4,
             },
             count: 0,
             delay: {
               random: {
                 enable: true,
-                minimumValue: 0.5,
+                minimumValue: 0.2,
               },
-              value: 1,
+              value: 0.5,
+            },
+          },
+          rotate: {
+            value: { min: 0, max: 360 },
+            direction: "random",
+            animation: {
+              enable: true,
+              speed: 5,
+              sync: false,
             },
           },
         },
