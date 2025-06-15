@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
@@ -16,7 +17,7 @@ import { ExitIntentModal } from "@/components/ExitIntentModal";
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => !sessionStorage.getItem("hasLoadedBefore"));
   const [isExitModalOpen, setIsExitModalOpen] = useState(false);
 
   useEffect(() => {
@@ -143,6 +144,7 @@ const Index = () => {
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
+    sessionStorage.setItem("hasLoadedBefore", "true");
   };
 
   if (isLoading) {
