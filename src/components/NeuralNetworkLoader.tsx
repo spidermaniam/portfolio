@@ -38,7 +38,7 @@ const NeuralNetworkLoader = () => {
         },
         particles: {
           color: {
-            value: ["#ffffff", "#87CEEB", "#4682B4"], // DNA-like colors
+            value: ["#ffffff", "#87CEEB", "#4682B4", "#FFD700"], // Added gold for more variety
           },
           links: {
             color: "#ffffff",
@@ -56,8 +56,8 @@ const NeuralNetworkLoader = () => {
             outModes: {
               default: "bounce",
             },
-            random: false,
-            speed: 1,
+            random: true,
+            speed: 2,
             straight: false,
           },
           number: {
@@ -65,7 +65,7 @@ const NeuralNetworkLoader = () => {
               enable: true,
               area: 800,
             },
-            value: 80,
+            value: 200,
           },
           opacity: {
             value: 0.5,

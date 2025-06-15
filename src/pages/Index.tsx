@@ -10,75 +10,8 @@ import ContactSection from "../components/ContactSection";
 import LoadingScreen from "../components/LoadingScreen";
 import CustomCursor from "../components/CustomCursor";
 import Footer from "../components/Footer";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import { useToast } from "@/components/ui/use-toast";
-
-const leadFormSchema = z.object({
-  contact: z.string().min(5, {
-    message: "Please enter a valid email or phone number.",
-  }),
-});
-
-type LeadFormValues = z.infer<typeof leadFormSchema>;
-
-const ExitIntentModal = ({ isOpen, onOpenChange }: { isOpen: boolean, onOpenChange: (open: boolean) => void }) => {
-  const { toast } = useToast();
-  const { register, handleSubmit, formState: { errors }, reset } = useForm<LeadFormValues>({
-    resolver: zodResolver(leadFormSchema),
-  });
-
-  const onSubmit = (data: LeadFormValues) => {
-    console.log("Lead captured:", data);
-    // In a real application, you would send this to a backend endpoint.
-    // For now, we'll show a success message.
-    toast({
-      title: "Thank you!",
-      description: "I've received your contact info and will be in touch shortly.",
-    });
-    onOpenChange(false);
-    reset();
-  };
-    
-  return (
-    <Dialog open={isOpen} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Wait! Before You Go...</DialogTitle>
-          <DialogDescription>
-            I'd love to connect. Leave your email or phone number, and I'll get in touch. No spam, I promise.
-          </DialogDescription>
-        </DialogHeader>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 py-4">
-          <div>
-            <Input
-              id="contact"
-              placeholder="email@example.com or phone number"
-              {...register("contact")}
-              className="col-span-3"
-            />
-            {errors.contact && <p className="text-red-500 text-xs mt-2">{errors.contact.message}</p>}
-          </div>
-          <DialogFooter>
-            <Button type="submit">Send Message</Button>
-          </DialogFooter>
-        </form>
-      </DialogContent>
-    </Dialog>
-  );
-};
-
+import { ExitIntentModal } from "@/components/ExitIntentModal";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -191,16 +124,20 @@ const Index = () => {
   useEffect(() => {
     if (isLoading) return;
 
-    const handleMouseOut = (e: MouseEvent) => {
-      if (e.clientY < 50) {
+    const handleMouseLeave = (e: MouseEvent) => {
+      // Only trigger if modal hasn't been shown in this session.
+      if (!sessionStorage.getItem('exit-intent-shown')) {
         setIsExitModalOpen(true);
+        sessionStorage.setItem('exit-intent-shown', 'true');
       }
     };
 
-    document.addEventListener('mouseout', handleMouseOut);
+    // Use `mouseleave` on the document element for better exit detection.
+    // This event fires when the pointer has moved out of the entire page.
+    document.documentElement.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
-      document.removeEventListener('mouseout', handleMouseOut);
+      document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, [isLoading]);
 
