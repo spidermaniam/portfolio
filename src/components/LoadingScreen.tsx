@@ -74,19 +74,17 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
       if (hasLoggedEntry) return;
       setHasLoggedEntry(true);
 
-      await fetch("https://qoergyvppqhvjzeqgdzt.functions.supabase.co/log-entry", {
-        method: "POST",
-        headers: { 
-          "Content-Type": "application/json", 
-          "apikey": import.meta.env.VITE_SUPABASE_ANON_KEY, 
-          "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}` 
-        },
-        body: JSON.stringify({
+      const { error } = await supabase.functions.invoke("log-entry", {
+        body: {
           user_agent: navigator.userAgent,
           platform: navigator.platform ?? "unknown",
           touch_points: navigator.maxTouchPoints ?? 0,
-        }),
+        },
       });
+
+      if (error) {
+        console.error("Failed to log boot entry:", error);
+      }
 
       setFadeOut(true);
       setTimeout(() => {
