@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { ArrowDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
@@ -37,6 +38,13 @@ const HeroSection = () => {
     }
   };
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative section-padding overflow-hidden">
       {/* Minimalist background effects */}
@@ -69,18 +77,21 @@ const HeroSection = () => {
           
           <div className="scroll-animate text-reveal">
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button
+              <Button
                 onClick={scrollToAbout}
-                className="px-8 py-3 bg-foreground text-background rounded-lg font-medium hover:bg-muted-foreground transition-all hover:scale-105 hover:shadow-xl font-mono"
+                size="lg"
+                className="bg-foreground text-background hover:bg-muted-foreground font-mono"
               >
                 Learn More About Me
-              </button>
-              <a
-                href="mailto:dhruvpuri00766@gmail.com"
-                className="px-8 py-3 border border-foreground text-foreground rounded-lg font-medium hover:bg-foreground hover:text-background transition-all hover:scale-105 font-mono"
+              </Button>
+              <Button
+                onClick={scrollToContact}
+                variant="outline"
+                size="lg"
+                className="border-foreground text-foreground hover:bg-foreground hover:text-background font-mono"
               >
                 Get In Touch
-              </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -103,3 +114,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
