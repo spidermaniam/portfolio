@@ -45,6 +45,24 @@ export type Database = {
         }
         Relationships: []
       }
+      leads: {
+        Row: {
+          contact_info: string
+          created_at: string
+          id: string
+        }
+        Insert: {
+          contact_info: string
+          created_at?: string
+          id?: string
+        }
+        Update: {
+          contact_info?: string
+          created_at?: string
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
