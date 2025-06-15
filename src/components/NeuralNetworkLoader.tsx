@@ -1,3 +1,4 @@
+
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
@@ -13,64 +14,64 @@ const NeuralNetworkLoader = () => {
       init={particlesInit}
       options={{
         background: {
-          color: { value: "#000000" },
+          color: { value: "transparent" },
         },
         fullScreen: false,
         fpsLimit: 60,
         interactivity: {
           events: {
             onHover: {
-              enable: true,
-              mode: "grab", // switch to "grab" for connection effect
+              enable: false,
             },
             resize: true,
           },
-          modes: {
-            grab: {
-              distance: 140,
-              links: {
-                opacity: 0.6,
-              },
-            },
-            repulse: {
-              distance: 100,
-              duration: 0.4,
-            },
-          },
         },
         particles: {
-          color: { value: "#00f6ff" },
+          color: { 
+            value: ["#1e40af", "#3b82f6", "#60a5fa"] 
+          },
           links: {
-            color: "#00ffff",
-            distance: 130,
+            color: "#1e40af",
+            distance: 200,
             enable: true,
-            opacity: 0.6,
-            width: 1.2,
+            opacity: 0.1,
+            width: 0.5,
           },
           collisions: {
             enable: false,
           },
           move: {
             enable: true,
-            speed: 1,
+            speed: 0.3,
             direction: "none",
-            outModes: "bounce",
+            outModes: "out",
+            straight: false,
           },
           number: {
-            value: 120, // denser net
+            value: 30,
             density: {
               enable: true,
-              area: 800,
+              area: 1200,
             },
           },
           opacity: {
-            value: 0.8,
+            value: { min: 0.1, max: 0.3 },
+            animation: {
+              enable: true,
+              speed: 0.8,
+              sync: false,
+            },
           },
           shape: {
             type: "circle",
           },
           size: {
-            value: { min: 3, max: 5 },
+            value: { min: 1, max: 2 },
+            animation: {
+              enable: true,
+              speed: 1,
+              sync: false,
+            },
           },
         },
         detectRetina: true,
