@@ -177,7 +177,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 h-96">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 lg:h-[550px]">
             
             <div className="lg:col-span-2 h-full">
               <ConsoleDisplay 
@@ -187,10 +187,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
               />
             </div>
 
-            <div className="space-y-4 h-full">
-              <div className="flex-1">
-                <MetricsPanel metrics={metrics} />
-              </div>
+            <div className="flex flex-col space-y-4 h-full">
+              <MetricsPanel metrics={metrics} />
               <SystemDiagnostics />
             </div>
           </div>

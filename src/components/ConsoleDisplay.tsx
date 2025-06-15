@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface LogEntry {
@@ -18,11 +17,11 @@ const ConsoleDisplay: React.FC<ConsoleDisplayProps> = ({ logs, currentLogIndex, 
   const currentLog = logs[currentLogIndex];
 
   return (
-    <div className="bg-black/90 rounded-lg p-4 border border-white/20 shadow-inner h-full">
-      <div className="text-xs text-white/60 mb-3 font-mono">
+    <div className="bg-black/90 rounded-lg p-4 border border-white/20 shadow-inner h-full flex flex-col">
+      <div className="text-xs text-white/60 mb-3 font-mono shrink-0">
         $ ./simulate_model.sh --mode=fast --validation=on
       </div>
-      <div className="space-y-2 font-mono text-sm h-64 overflow-y-auto scrollbar-thin scrollbar-thumb-white/20">
+      <div className="space-y-2 font-mono text-sm flex-grow overflow-y-auto scrollbar-thin scrollbar-thumb-white/20 pr-2">
         
         {/* Previous logs */}
         {logs.slice(0, currentLogIndex).map((log, i) => (

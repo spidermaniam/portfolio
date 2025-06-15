@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import Navigation from "../components/Navigation";
 import HeroSection from "../components/HeroSection";
@@ -10,6 +9,7 @@ import CertificationsSection from "../components/CertificationsSection";
 import ContactSection from "../components/ContactSection";
 import LoadingScreen from "../components/LoadingScreen";
 import CustomCursor from "../components/CustomCursor";
+import Footer from "../components/Footer";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -127,7 +127,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden flex flex-col">
       <CustomCursor />
       
       {/* Enhanced scroll progress indicator */}
@@ -156,7 +156,7 @@ const Index = () => {
       </div>
       
       <Navigation activeSection={activeSection} />
-      <main>
+      <main className="flex-grow">
         <div className="section-fade">
           <HeroSection />
         </div>
@@ -179,6 +179,7 @@ const Index = () => {
           <ContactSection />
         </div>
       </main>
+      <Footer />
     </div>
   );
 };

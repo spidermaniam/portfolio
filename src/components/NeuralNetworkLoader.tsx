@@ -26,17 +26,17 @@ const NeuralNetworkLoader = () => {
           },
         },
         particles: {
-          color: { value: ["#00eaff", "#0ef6cc", "#a2ff00", "#ff45c3", "#fff41c", "#ff4c32", "#7367f0"] },
+          color: { value: ["#ffffff", "#cccccc", "#999999"] },
           links: {
-            color: "#00eaff",
+            color: "#ffffff",
             distance: 92,
             enable: true,
-            opacity: 0.42,
-            width: 2.3,
+            opacity: 0.15,
+            width: 1,
             triangles: {
               enable: true,
-              opacity: 0.06,
-              color: "#7367f0",
+              opacity: 0.05,
+              color: "#ffffff",
             },
           },
           collisions: { enable: false },
@@ -105,3 +105,4 @@ const NeuralNetworkLoader = () => {
 };
 
 export default NeuralNetworkLoader;
+
