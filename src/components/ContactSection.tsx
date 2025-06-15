@@ -91,7 +91,7 @@ const ContactSection = () => {
                 <div
                   onClick={() =>
                     window.open(
-                      "https://docs.google.com/document/d/1B7p-p_jAF7YdnB56emJ_3_40BHQ2dYgK/edit?usp=sharing&ouid=107383921946392695882&rtpof=true&sd=true",
+                      "https://drive.google.com/file/d/1Wl1G-UTjiRkHgfGJn29LfvenKlkF9ZDe/view?usp=sharing",
                       "_blank"
                     )
                   }

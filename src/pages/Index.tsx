@@ -192,9 +192,8 @@ const Index = () => {
     if (isLoading) return;
 
     const handleMouseOut = (e: MouseEvent) => {
-      if (e.clientY < 50 && !sessionStorage.getItem('exit-intent-shown')) {
+      if (e.clientY < 50) {
         setIsExitModalOpen(true);
-        sessionStorage.setItem('exit-intent-shown', 'true');
       }
     };
 

@@ -9,80 +9,78 @@ const NeuralNetworkLoader = () => {
   }, []);
 
   return (
-    <>
-      {/* Background starfield */}
-      <Particles
-        id="background-stars"
-        className="absolute inset-0 z-0"
-        init={particlesInit}
-        options={{
-          background: { color: { value: "transparent" } },
-          fullScreen: { enable: true, zIndex: -1 },
-          fpsLimit: 120,
-          particles: {
-            color: { value: ["#ffffff", "#FFD700", "#FFA500"] },
-            links: { enable: false },
-            move: {
-              enable: true,
-              speed: 0.2,
-              direction: "none",
-              outModes: "out",
-            },
-            number: { value: 200, density: { enable: true, area: 800 } },
-            opacity: { value: { min: 0.1, max: 0.5 } },
-            shape: { type: "circle" },
-            size: { value: { min: 1, max: 2 } },
+    <Particles
+      id="tsparticles"
+      init={particlesInit}
+      options={{
+        background: {
+          color: {
+            value: "#000000",
           },
-          detectRetina: true,
-        }}
-      />
-      {/* Foreground "neuron" bubbles */}
-      <Particles
-        id="foreground-bubbles"
-        className="absolute top-0 left-0 h-full w-1/3 z-0"
-        init={particlesInit}
-        options={{
-          background: { color: { value: "transparent" } },
-          fullScreen: false,
-          fpsLimit: 60,
-          interactivity: {
-            events: {
-              onHover: { enable: true, mode: "bubble" },
-              resize: true,
+        },
+        fpsLimit: 120,
+        interactivity: {
+          events: {
+            onHover: {
+              enable: true,
+              mode: "grab",
             },
-            modes: {
-              bubble: {
-                distance: 150,
-                duration: 2,
-                size: 20,
+            resize: true,
+          },
+          modes: {
+            grab: {
+              distance: 140,
+              links: {
                 opacity: 1,
               },
             },
           },
-          particles: {
-            color: { value: ["#ffffff", "#FFD700", "#FFA500", "#808080"] },
-            links: { enable: false },
-            collisions: { enable: false },
-            move: {
-              enable: true,
-              speed: 1,
-              direction: "none",
-              outModes: "out",
-              straight: false,
-              random: true,
-            },
-            number: { value: 20, density: { enable: true, area: 800 } },
-            opacity: {
-              value: { min: 0.2, max: 0.7 },
-              animation: { enable: true, speed: 1, sync: false },
-            },
-            shape: { type: "circle" },
-            size: { value: { min: 10, max: 50 }, animation: { enable: true, speed: 5, sync: false }},
+        },
+        particles: {
+          color: {
+            value: ["#ffffff", "#87CEEB", "#4682B4"], // DNA-like colors
           },
-          detectRetina: true,
-        }}
-      />
-    </>
+          links: {
+            color: "#ffffff",
+            distance: 150,
+            enable: true,
+            opacity: 0.4,
+            width: 1,
+          },
+          collisions: {
+            enable: false,
+          },
+          move: {
+            direction: "none",
+            enable: true,
+            outModes: {
+              default: "bounce",
+            },
+            random: false,
+            speed: 1,
+            straight: false,
+          },
+          number: {
+            density: {
+              enable: true,
+              area: 800,
+            },
+            value: 80,
+          },
+          opacity: {
+            value: 0.5,
+          },
+          shape: {
+            type: "circle",
+          },
+          size: {
+            value: { min: 1, max: 5 },
+          },
+        },
+        detectRetina: true,
+      }}
+      className="absolute inset-0 z-0"
+    />
   );
 };
 
