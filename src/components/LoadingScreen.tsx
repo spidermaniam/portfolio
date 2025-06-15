@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import NeuralNetworkLoader from "@/components/NeuralNetworkLoader";
 import { supabase } from "@/lib/supabaseClient";
@@ -16,20 +15,20 @@ interface LogEntry {
 }
 
 const researchLogs: LogEntry[] = [
-  { type: "motivation", content: "🚀 Welcome to an incredible journey through AI innovation!" },
-  { type: "init", content: "Initializing PyTorch environment... CUDA 12.1 detected ⚡" },
-  { type: "motivation", content: "✨ Preparing to showcase cutting-edge machine learning expertise" },
-  { type: "dataset", content: "Loading training dataset: 847,392 samples | 128 features 📊" },
-  { type: "model", content: "Transformer architecture loaded 🧠", model: { params: "342M", layers: 24 } },
-  { type: "motivation", content: "🎯 Get ready to explore groundbreaking AI solutions!" },
-  { type: "equation", equation: "∇θ J(θ) = 1/m Σ(h_θ(x^(i)) - y^(i))x^(i)" },
-  { type: "training", content: "Adam optimizer initialized | lr=3e-4 | β1=0.9, β2=0.999 🔥" },
-  { type: "motivation", content: "💡 Innovation meets expertise - prepare to be amazed!" },
-  { type: "validation", content: "Cross-validation setup: 5-fold | stratified sampling ✅" },
-  { type: "equation", equation: "Loss = -1/N Σ y_i log(p_i) + λ||θ||²" },
-  { type: "training", content: "Batch processing: 512 samples/batch | Mixed precision FP16 ⚡" },
-  { type: "motivation", content: "🌟 Welcome to the future of artificial intelligence!" },
-  { type: "complete", content: "Research environment ready | TensorBoard logging enabled 🎉" },
+  { type: "motivation", content: "🌟 Welcome! Get ready to discover passion-driven innovation!" },
+  { type: "init", content: "Initializing creative workspace... Dreams to reality converter ACTIVE ✨" },
+  { type: "motivation", content: "💡 Where curiosity meets cutting-edge technology!" },
+  { type: "dataset", content: "Loading inspiration dataset: 1M+ ideas | Infinite possibilities 🚀" },
+  { type: "model", content: "Optimism engine loaded 🧠", model: { params: "∞", layers: 24 } },
+  { type: "motivation", content: "🎯 Building tomorrow's solutions with today's enthusiasm!" },
+  { type: "equation", equation: "Success = Passion × Innovation × Persistence" },
+  { type: "training", content: "Positivity optimizer running | Learning rate: MAXIMUM 🔥" },
+  { type: "motivation", content: "⚡ Transforming challenges into opportunities, one line at a time!" },
+  { type: "validation", content: "Quality assurance: Excellence mode enabled ✅" },
+  { type: "equation", equation: "Impact = Vision + Hard Work + Collaboration" },
+  { type: "training", content: "Solution architect engaged | Creative mode: UNLIMITED 🎨" },
+  { type: "motivation", content: "🌈 Ready to explore a world of endless possibilities?" },
+  { type: "complete", content: "Adventure mode activated | Let's create something amazing together! 🎉" },
 ];
 
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
@@ -157,15 +156,15 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-xl font-semibold text-cyan-400 font-mono drop-shadow-lg">
-                  🤖 AI/ML Research Environment
+                  🚀 Innovation Lab | Dream Engine
                 </h1>
                 <p className="text-sm text-slate-300 mt-1">
-                  PyTorch 2.1.0 | CUDA 12.1 | cuDNN 8.9.0 | ⚡ Optimized for Innovation
+                  Powered by Passion | Fueled by Optimism | ✨ Building the Future
                 </p>
               </div>
               <div className="text-right">
-                <div className="text-sm text-slate-400">Training Session</div>
-                <div className="text-lg font-mono text-green-400 animate-pulse">🟢 Active</div>
+                <div className="text-sm text-slate-400">Creativity Mode</div>
+                <div className="text-lg font-mono text-green-400 animate-pulse">🌟 INSPIRED</div>
               </div>
             </div>
           </div>
@@ -176,7 +175,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             <div className="lg:col-span-2 space-y-4">
               <div className="bg-slate-950/80 rounded-lg p-4 border border-cyan-500/20 shadow-inner">
                 <div className="text-xs text-cyan-400 mb-3 font-mono">
-                  $ python train_model.py --config research_config.yaml --accelerate ⚡
+                  $ node unleash_potential.js --mode=inspiration --energy=maximum ⚡
                 </div>
                 <div className="space-y-2 font-mono text-sm h-64 overflow-hidden">
                   
@@ -220,11 +219,11 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             {/* Enhanced Metrics Panel */}
             <div className="space-y-4">
               <div className="bg-slate-950/80 rounded-lg p-4 border border-green-500/20 shadow-inner">
-                <h3 className="text-sm font-semibold text-green-400 mb-3">🎯 Training Metrics</h3>
+                <h3 className="text-sm font-semibold text-green-400 mb-3">✨ Inspiration Metrics</h3>
                 <div className="space-y-3">
                   <div>
                     <div className="flex justify-between text-xs text-slate-400 mb-1">
-                      <span>Loss</span>
+                      <span>Enthusiasm</span>
                       <span className="font-mono text-red-400">{currentMetrics.loss.toFixed(4)}</span>
                     </div>
                     <div className="w-full bg-slate-800 rounded-full h-2">
@@ -237,7 +236,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
                   
                   <div>
                     <div className="flex justify-between text-xs text-slate-400 mb-1">
-                      <span>Accuracy</span>
+                      <span>Positivity</span>
                       <span className="font-mono text-green-400">{(currentMetrics.accuracy * 100).toFixed(2)}%</span>
                     </div>
                     <div className="w-full bg-slate-800 rounded-full h-2">
@@ -249,26 +248,26 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
                   </div>
 
                   <div className="pt-2 border-t border-slate-700/50">
-                    <div className="text-xs text-slate-400">Epoch</div>
-                    <div className="text-lg font-mono text-cyan-400">{currentMetrics.epoch}/100</div>
+                    <div className="text-xs text-slate-400">Ideas Generated</div>
+                    <div className="text-lg font-mono text-cyan-400">{currentMetrics.epoch}/∞</div>
                   </div>
                 </div>
               </div>
 
               <div className="bg-slate-950/80 rounded-lg p-4 border border-purple-500/20 shadow-inner">
-                <h3 className="text-sm font-semibold text-purple-400 mb-3">⚡ System Resources</h3>
+                <h3 className="text-sm font-semibold text-purple-400 mb-3">🧠 Creative Engine</h3>
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between">
-                    <span className="text-slate-400">GPU Memory</span>
-                    <span className="font-mono text-green-400">7.2/24.0 GB</span>
+                    <span className="text-slate-400">Innovation Level</span>
+                    <span className="font-mono text-green-400">MAXIMUM</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">GPU Utilization</span>
-                    <span className="font-mono text-blue-400">94%</span>
+                    <span className="text-slate-400">Curiosity Index</span>
+                    <span className="font-mono text-blue-400">∞%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Batch/sec</span>
-                    <span className="font-mono text-purple-400">3.2</span>
+                    <span className="text-slate-400">Dreams/sec</span>
+                    <span className="font-mono text-purple-400">99.9</span>
                   </div>
                 </div>
               </div>
@@ -279,10 +278,10 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
           {showContinue && (
             <div className="border-t border-cyan-500/30 p-4 text-center bg-gradient-to-r from-slate-900/80 to-blue-900/80">
               <p className="text-slate-300 text-sm">
-                <span className="text-green-400 font-mono">✅</span> Environment initialized successfully
+                <span className="text-green-400 font-mono">✨</span> Ready to embark on an incredible journey together!
               </p>
               <p className="text-cyan-400 mt-2 animate-bounce font-semibold">
-                🚀 {window.innerWidth < 768 ? "Tap to explore the future" : "Press ENTER to explore the future"} →
+                🌟 {window.innerWidth < 768 ? "Tap to start this amazing adventure" : "Press ENTER to start this amazing adventure"} →
               </p>
             </div>
           )}
