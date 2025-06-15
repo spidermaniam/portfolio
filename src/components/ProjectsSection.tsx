@@ -1,4 +1,4 @@
-// src/components/ProjectsSection.tsx
+
 import { ExternalLink, Github } from "lucide-react";
 
 const ProjectsSection = () => {
@@ -6,35 +6,53 @@ const ProjectsSection = () => {
     {
       title: "CardHint",
       description:
-        "A modern web application for card game hints and strategies. Built with React and TypeScript for an intuitive user experience.",
+        "CardHint offers real-time suggestions, probability calculations, and a user-friendly interface to help players of all skill levels improve their game. It features a responsive design for seamless use on desktop and mobile devices. The backend is powered by a custom algorithm that analyzes game states to provide optimal moves, all built with a modern React and TypeScript stack.",
       image:
         "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=450&fit=crop&crop=center",
       link: "https://cardhint.com/",
       github: "#",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
       featured: true,
+      keyFeatures: [
+        "Real-time Hints",
+        "Probability Analysis",
+        "Responsive Design",
+        "Custom Game Algorithm",
+      ],
     },
     {
       title: "3D Printer HMI",
       description:
-        "Full-stack Human Machine Interface for 3D printers with real-time monitoring and control capabilities.",
+        "A full-stack Human Machine Interface providing a sleek web dashboard to manage 3D printers. Key features include live camera feeds via MJPEG-streamer, real-time temperature and progress monitoring, G-code file management, and remote print control. The responsive frontend is built with React, communicating with a Flask backend that interfaces with the Moonraker API for seamless printer control.",
       image:
         "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=450&fit=crop&crop=center",
       link: "#",
       github: "#",
       technologies: ["React", "Flask", "Python", "Moonraker API"],
       featured: true,
+      keyFeatures: [
+        "Live Camera Feed",
+        "Remote Print Control",
+        "Real-time Monitoring",
+        "Flask & Moonraker API",
+      ],
     },
     {
       title: "Test Automation Framework",
       description:
-        "Comprehensive automation framework for device testing with Python, reducing manual testing effort by 50%.",
+        "A robust framework to automate end-to-end testing for hardware devices. Using Python with Selenium and Pytest, it orchestrates complex test scenarios, validates hardware-software interactions, and generates detailed reports. Integrated with AWS for scalable, parallel test execution, this framework significantly improved test coverage and reduced manual testing cycles by over 50%.",
       image:
         "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop&crop=center",
       link: "#",
       github: "#",
       technologies: ["Python", "Selenium", "Pytest", "AWS"],
       featured: false,
+      keyFeatures: [
+        "End-to-end Automation",
+        "Detailed Reporting",
+        "Scalable AWS Integration",
+        "Pytest & Selenium",
+      ],
     },
   ];
 
@@ -63,6 +81,19 @@ const ProjectsSection = () => {
         <p className="text-muted-foreground mb-6 leading-relaxed font-mono text-sm">
           {project.description}
         </p>
+
+        {project.keyFeatures && (
+          <div className="mb-6">
+            <h4 className="font-semibold mb-2 font-mono text-sm text-foreground/90">
+              Key Features:
+            </h4>
+            <ul className="list-disc list-inside text-muted-foreground space-y-1 font-mono text-sm">
+              {project.keyFeatures.map((feature) => (
+                <li key={feature}>{feature}</li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className="flex flex-wrap gap-2 mb-6">
           {project.technologies.map((tech) => (
