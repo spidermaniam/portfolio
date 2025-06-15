@@ -137,7 +137,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         setTimeout(() => {
           setLogIndex(prev => prev + 1);
           setTypedContent("");
-        }, 50); // Speed up delay between lines
+        }, 10); // Speed up delay between lines from 50 to 10
       }
     }, 1); // Speed up typing
     return () => clearInterval(typeInterval);
