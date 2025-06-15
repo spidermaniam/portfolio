@@ -17,7 +17,7 @@ const NeuralNetworkLoader = () => {
           color: { value: "transparent" },
         },
         fullScreen: false,
-        fpsLimit: 60,
+        fpsLimit: 120,
         interactivity: {
           events: {
             onHover: {
@@ -28,49 +28,72 @@ const NeuralNetworkLoader = () => {
         },
         particles: {
           color: { 
-            value: ["#1e40af", "#3b82f6", "#60a5fa"] 
+            value: ["#3b82f6", "#8b5cf6", "#06b6d4", "#10b981"] 
           },
           links: {
-            color: "#1e40af",
-            distance: 200,
+            color: "#3b82f6",
+            distance: 120,
             enable: true,
-            opacity: 0.1,
-            width: 0.5,
+            opacity: 0.15,
+            width: 1,
+            triangles: {
+              enable: true,
+              opacity: 0.02,
+            },
           },
           collisions: {
             enable: false,
           },
           move: {
             enable: true,
-            speed: 0.3,
+            speed: 1.2,
             direction: "none",
             outModes: "out",
             straight: false,
+            trail: {
+              enable: true,
+              length: 3,
+              fillColor: "#1e293b",
+            },
           },
           number: {
-            value: 30,
+            value: 60,
             density: {
               enable: true,
-              area: 1200,
+              area: 1000,
             },
           },
           opacity: {
-            value: { min: 0.1, max: 0.3 },
+            value: { min: 0.2, max: 0.8 },
             animation: {
               enable: true,
-              speed: 0.8,
+              speed: 2,
               sync: false,
             },
           },
           shape: {
-            type: "circle",
+            type: ["circle", "triangle"],
           },
           size: {
-            value: { min: 1, max: 2 },
+            value: { min: 1, max: 4 },
             animation: {
               enable: true,
-              speed: 1,
+              speed: 3,
               sync: false,
+            },
+          },
+          life: {
+            duration: {
+              sync: false,
+              value: 3,
+            },
+            count: 0,
+            delay: {
+              random: {
+                enable: true,
+                minimumValue: 0.5,
+              },
+              value: 1,
             },
           },
         },
