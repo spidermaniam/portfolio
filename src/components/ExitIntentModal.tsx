@@ -1,4 +1,3 @@
-
 import {
   Dialog,
   DialogContent,
@@ -21,7 +20,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/integrations/supabase/client";
 import { Sparkles } from "lucide-react";
 
 const leadFormSchema = z.object({
