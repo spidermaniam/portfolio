@@ -1,80 +1,75 @@
-// supabase/functions/log-entry/index.ts
+
 import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",           // ← change to your domain if you’d like
-  "Access-Control-Allow-Headers": "*",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
 serve(async (req) => {
-  /* ─────────────────────────────────────────────
-     1. CORS PRE-FLIGHT
-  ───────────────────────────────────────────── */
   if (req.method === "OPTIONS") {
-    return new Response("ok", { status: 200, headers: corsHeaders });
+    return new Response("ok", { headers: corsHeaders });
   }
 
-  /* ─────────────────────────────────────────────
-     2.  ACTUAL POST HANDLER
-  ───────────────────────────────────────────── */
   try {
-    /* ---- parse incoming JSON ---- */
-    const { user_agent, platform, touch_points } = await req.json();
+    const { user_agent, platform, touch_points, email_or_alias, message } = await req.json();
 
-    /* ---- IP & geolocation ---- */
-    const ip =
-      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
 
     let location = "Unknown";
     try {
-      const geoRes = await fetch(
-        `https://ipinfo.io/${ip}/json?token=583d4d06d4089f`,
-      );
-      if (geoRes.ok) {
-        const geo = await geoRes.json();
-        location = `${geo.city ?? "?"}, ${geo.country ?? "?"}`;
+      if (ip !== 'unknown' && ip !== '127.0.0.1') {
+        const geoRes = await fetch(
+          `https://ipinfo.io/${ip}/json?token=583d4d06d4089f`,
+        );
+        if (geoRes.ok) {
+          const geo = await geoRes.json();
+          location = `${geo.city ?? "?"}, ${geo.country ?? "?"}`;
+        }
       }
     } catch {
-      /* silently ignore geo failures */
+      // silently ignore geo failures
     }
 
-    /* ---- Supabase insert ---- */
     const supabase = createClient(
       Deno.env.get("SB_URL")!,
       Deno.env.get("SB_SERVICE_ROLE_KEY")!,
     );
 
     const { error } = await supabase.from("boot_entries").insert({
-      timestamp   : new Date().toISOString(),
+      timestamp: new Date().toISOString(),
       user_agent,
       platform,
       touch_points,
-      ip_address  : ip,
+      ip_address: ip,
       location,
+      email_or_alias,
+      message,
     });
 
     if (error) {
-      return new Response(JSON.stringify({ error }), {
+      console.error('Supabase error:', error);
+      return new Response(JSON.stringify({ error: error.message }), {
         status: 500,
-        headers: corsHeaders,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
-      headers: corsHeaders,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
 
   } catch (err) {
-    /* bad JSON or other runtime error */
+    console.error('Function error:', err);
     return new Response(JSON.stringify({
-      error  : "Malformed request",
-      message: err?.message ?? err,
+      error: "Malformed request",
+      message: err?.message ?? String(err),
     }), {
       status: 400,
-      headers: corsHeaders,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   }
 });

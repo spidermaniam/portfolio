@@ -45,18 +45,25 @@ export const ExitIntentModal = ({ isOpen, onOpenChange }: { isOpen: boolean, onO
 
   const onSubmit = async (data: LeadFormValues) => {
     try {
-      const { error } = await supabase
-        .from('boot_entries')
-        .insert({
+      const { data: functionData, error } = await supabase.functions.invoke('log-entry', {
+        body: {
           email_or_alias: data.email_or_alias,
           message: data.message,
-          timestamp: new Date().toISOString(),
-        });
+          user_agent: navigator.userAgent,
+          platform: navigator.platform,
+          touch_points: navigator.maxTouchPoints,
+        }
+      })
 
       if (error) {
         throw error;
       }
 
+      // The function might return an error in its body if the insert fails
+      if (functionData?.error) {
+        throw new Error(functionData.error);
+      }
+      
       toast({
         title: "Thank you! ✨",
         description: "I've received your contact info and will be in touch shortly.",
