@@ -79,6 +79,21 @@
     cursor: none !important;
   }
 
+  /* Restore default cursors for interactive elements */
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: text !important;
+  }
+
+  button,
+  a,
+  label[for],
+  select,
+  .cursor-pointer {
+    cursor: pointer !important;
+  }
+
   html {
     scroll-behavior: smooth;
   }
