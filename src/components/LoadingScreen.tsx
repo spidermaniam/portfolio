@@ -39,15 +39,15 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
 
   const hiddenInputRef = useRef<HTMLInputElement | null>(null);
 
-  // Simulate training metrics - faster updates
+  // Simulate training metrics - faster updates (interval reduced)
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentMetrics(prev => ({
-        loss: Math.max(0.001, prev.loss * 0.92),
-        accuracy: Math.min(0.998, prev.accuracy + Math.random() * 0.08),
+        loss: Math.max(0.001, prev.loss * 0.90),
+        accuracy: Math.min(0.998, prev.accuracy + Math.random() * 0.12),
         epoch: prev.epoch + 1
       }));
-    }, 500);
+    }, 285); // was 500ms, now much faster
     return () => clearInterval(interval);
   }, []);
 
@@ -95,7 +95,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     if (showContinue) hiddenInputRef.current?.focus();
   }, [showContinue]);
 
-  // Log progression - faster typing
+  // Log progression - faster typing animation
   useEffect(() => {
     if (logIndex >= researchLogs.length) {
       setShowContinue(true);
@@ -104,7 +104,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
 
     const currentLog = researchLogs[logIndex];
     const contentToType = currentLog.content || currentLog.equation || "";
-    
+
     let charIndex = 0;
     const typeInterval = setInterval(() => {
       if (charIndex <= contentToType.length) {
@@ -115,10 +115,9 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         setTimeout(() => {
           setLogIndex(prev => prev + 1);
           setTypedContent("");
-        }, 200);
+        }, 120); // was 200ms; now much faster
       }
-    }, 15);
-
+    }, 10); // was 15ms, now faster
     return () => clearInterval(typeInterval);
   }, [logIndex]);
 
@@ -215,19 +214,9 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
               <div className="bg-slate-950/80 rounded-lg p-4 border border-green-500/20 shadow-inner">
                 <h3 className="text-sm font-semibold text-green-400 mb-3">Model Training Metrics</h3>
                 <div className="space-y-3">
-                  <div>
-                    <div className="flex justify-between text-xs text-slate-400 mb-1">
-                      <span>Loss</span>
-                      <span className="font-mono text-red-400">{currentMetrics.loss.toFixed(4)}</span>
-                    </div>
-                    <div className="w-full bg-slate-800 rounded-full h-2">
-                      <div 
-                        className="bg-gradient-to-r from-red-500 to-orange-400 h-2 rounded-full transition-all duration-300 shadow-lg" 
-                        style={{ width: `${Math.max(5, 100 - currentMetrics.loss * 35)}%` }}
-                      />
-                    </div>
-                  </div>
                   
+                  {/* Loss REMOVED */}
+
                   <div>
                     <div className="flex justify-between text-xs text-slate-400 mb-1">
                       <span>Accuracy</span>
