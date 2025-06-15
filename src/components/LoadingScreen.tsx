@@ -42,7 +42,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   const [typedContent, setTypedContent] = useState("");
   const [showContinue, setShowContinue] = useState(false);
   
-  // New, simulated metrics
   const [metrics, setMetrics] = useState({
     accuracy: 0.0,
     precision: 0.0,
@@ -55,7 +54,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
 
   const hiddenInputRef = useRef<HTMLInputElement | null>(null);
 
-  // Simulate training metrics - faster updates (interval reduced)
   useEffect(() => {
     const interval = setInterval(() => {
       setMetrics(prev => ({
@@ -67,11 +65,10 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         stability: Math.min(0.999, prev.stability + Math.random() * 0.01),
         epoch: prev.epoch + 1
       }));
-    }, 180); // even faster
+    }, 180);
     return () => clearInterval(interval);
   }, []);
 
-  // Handle completion
   useEffect(() => {
     if (!showContinue) return;
 
@@ -115,7 +112,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     if (showContinue) hiddenInputRef.current?.focus();
   }, [showContinue]);
 
-  // Log progression - faster typing animation
   useEffect(() => {
     if (logIndex >= researchLogs.length) {
       setShowContinue(true);
@@ -135,9 +131,9 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         setTimeout(() => {
           setLogIndex(prev => prev + 1);
           setTypedContent("");
-        }, 90); // was 200ms; now much faster
+        }, 90);
       }
-    }, 7); // was 15ms, now faster
+    }, 7);
     return () => clearInterval(typeInterval);
   }, [logIndex]);
 
@@ -145,48 +141,45 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] bg-gradient-to-br from-slate-950 via-blue-950 to-purple-950 text-gray-100 overflow-hidden transition-all duration-800 ease-out ${
+      className={`fixed inset-0 z-[9999] bg-black text-white overflow-hidden transition-all duration-800 ease-out ${
         fadeOut ? "opacity-0 scale-95" : "opacity-100 scale-100"
       }`}
     >
       <NeuralNetworkLoader />
       
-      {/* Enhanced grid overlay */}
-      <div className="absolute inset-0 opacity-10" 
+      <div className="absolute inset-0 opacity-5" 
            style={{
              backgroundImage: `
-               linear-gradient(rgba(0, 212, 255, 0.3) 1px, transparent 1px),
-               linear-gradient(90deg, rgba(0, 212, 255, 0.3) 1px, transparent 1px)
+               linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+               linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
              `,
              backgroundSize: '30px 30px'
            }} 
       />
 
       <div className="absolute inset-0 flex items-center justify-center z-10 p-4">
-        <div className="w-full max-w-6xl bg-slate-900/90 backdrop-blur-xl rounded-xl border border-cyan-500/30 shadow-2xl shadow-cyan-500/20">
+        <div className="w-full max-w-6xl bg-black/95 backdrop-blur-xl rounded-xl border border-white/20 shadow-2xl">
           
-          {/* Header */}
-          <div className="border-b border-cyan-500/30 p-4 bg-gradient-to-r from-slate-900/80 to-blue-900/80">
+          <div className="border-b border-white/20 p-4">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-xl font-semibold text-cyan-400 font-mono drop-shadow-lg">
+                <h1 className="text-xl font-semibold text-white font-mono">
                   AI Model Simulation Console
                 </h1>
-                <p className="text-sm text-slate-300 mt-1">
+                <p className="text-sm text-white/60 mt-1 font-mono">
                   Advanced Machine Learning Deployment Interface
                 </p>
               </div>
               <div className="text-right">
-                <div className="text-sm text-slate-400">Simulation Status</div>
-                <div className="text-lg font-mono text-green-400 animate-pulse">ACTIVE</div>
+                <div className="text-sm text-white/60 font-mono">Simulation Status</div>
+                <div className="text-lg font-mono text-white animate-pulse">ACTIVE</div>
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 h-96">
             
-            {/* Main Console */}
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 h-full">
               <ConsoleDisplay 
                 logs={researchLogs}
                 currentLogIndex={logIndex}
@@ -194,18 +187,18 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
               />
             </div>
 
-            {/* Metrics Panel */}
-            <div className="space-y-4">
-              <MetricsPanel metrics={metrics} />
+            <div className="space-y-4 h-full">
+              <div className="flex-1">
+                <MetricsPanel metrics={metrics} />
+              </div>
               <SystemDiagnostics />
             </div>
           </div>
 
-          {/* Footer */}
           {showContinue && (
-            <div className="border-t border-cyan-500/30 p-3 text-center bg-gradient-to-r from-slate-900/80 to-blue-900/80">
-              <p className="text-cyan-300 text-sm font-mono">
-                Simulation Complete. <span className="text-green-400">Press ENTER or tap to proceed.</span>
+            <div className="border-t border-white/20 p-3 text-center">
+              <p className="text-white text-sm font-mono">
+                Simulation Complete. <span className="text-white/80">Press ENTER or tap to proceed.</span>
               </p>
             </div>
           )}
