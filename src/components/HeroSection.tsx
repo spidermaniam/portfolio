@@ -86,9 +86,8 @@ const HeroSection = () => {
               </Button>
               <Button
                 onClick={scrollToContact}
-                variant="outline"
                 size="lg"
-                className="border-foreground text-foreground hover:bg-foreground hover:text-background font-mono"
+                className="bg-foreground text-background hover:bg-muted-foreground font-mono"
               >
                 Get In Touch
               </Button>
@@ -114,4 +113,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
