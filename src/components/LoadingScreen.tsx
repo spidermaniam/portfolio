@@ -15,20 +15,17 @@ interface LogEntry {
 }
 
 const researchLogs: LogEntry[] = [
-  { type: "motivation", content: "🌟 Welcome! Get ready to discover passion-driven innovation!" },
-  { type: "init", content: "Initializing creative workspace... Dreams to reality converter ACTIVE ✨" },
-  { type: "motivation", content: "💡 Where curiosity meets cutting-edge technology!" },
-  { type: "dataset", content: "Loading inspiration dataset: 1M+ ideas | Infinite possibilities 🚀" },
-  { type: "model", content: "Optimism engine loaded 🧠", model: { params: "∞", layers: 24 } },
-  { type: "motivation", content: "🎯 Building tomorrow's solutions with today's enthusiasm!" },
-  { type: "equation", equation: "Success = Passion × Innovation × Persistence" },
-  { type: "training", content: "Positivity optimizer running | Learning rate: MAXIMUM 🔥" },
-  { type: "motivation", content: "⚡ Transforming challenges into opportunities, one line at a time!" },
-  { type: "validation", content: "Quality assurance: Excellence mode enabled ✅" },
-  { type: "equation", equation: "Impact = Vision + Hard Work + Collaboration" },
-  { type: "training", content: "Solution architect engaged | Creative mode: UNLIMITED 🎨" },
-  { type: "motivation", content: "🌈 Ready to explore a world of endless possibilities?" },
-  { type: "complete", content: "Adventure mode activated | Let's create something amazing together! 🎉" },
+  { type: "init", content: "Initializing runtime environment..." },
+  { type: "dataset", content: "Loading dataset: schema verified | records: 1,048,576" },
+  { type: "model", content: "Compiling neural architecture: 24 layers | parameters: 48.2M", model: { params: "48.2M", layers: 24 } },
+  { type: "equation", equation: "forward_pass(x) = activation(weights × x + bias)" },
+  { type: "training", content: "Tensor allocation: complete | Batch size: 128 | Optimizer: Adam" },
+  { type: "validation", content: "Running validation checks | Data augmentation: enabled" },
+  { type: "equation", equation: "loss = Σ(target - prediction)² / n" },
+  { type: "training", content: "Epochs: 1/∞ | Gradient descent in progress..." },
+  { type: "training", content: "Computing predictions | Evaluating inference latency..." },
+  { type: "validation", content: "Verification: accuracy threshold achieved | Model stable" },
+  { type: "complete", content: "Simulation complete. Awaiting user interaction..." },
 ];
 
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
@@ -156,26 +153,26 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-xl font-semibold text-cyan-400 font-mono drop-shadow-lg">
-                  🚀 Innovation Lab | Dream Engine
+                  AI Model Simulation Console
                 </h1>
                 <p className="text-sm text-slate-300 mt-1">
-                  Powered by Passion | Fueled by Optimism | ✨ Building the Future
+                  Advanced Machine Learning Deployment Interface
                 </p>
               </div>
               <div className="text-right">
-                <div className="text-sm text-slate-400">Creativity Mode</div>
-                <div className="text-lg font-mono text-green-400 animate-pulse">🌟 INSPIRED</div>
+                <div className="text-sm text-slate-400">Simulation Status</div>
+                <div className="text-lg font-mono text-green-400 animate-pulse">ACTIVE</div>
               </div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
             
-            {/* Main Console with enhanced styling */}
+            {/* Main Console, technical display */}
             <div className="lg:col-span-2 space-y-4">
               <div className="bg-slate-950/80 rounded-lg p-4 border border-cyan-500/20 shadow-inner">
                 <div className="text-xs text-cyan-400 mb-3 font-mono">
-                  $ node unleash_potential.js --mode=inspiration --energy=maximum ⚡
+                  $ ./simulate_model.sh --mode=fast --validation=on
                 </div>
                 <div className="space-y-2 font-mono text-sm h-64 overflow-hidden">
                   
@@ -183,13 +180,11 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
                   {researchLogs.slice(0, logIndex).map((log, i) => (
                     <div key={i} className="flex items-start space-x-2">
                       <span className="text-cyan-400">▶</span>
-                      {log.type === "motivation" ? (
-                        <div className="text-yellow-300 font-semibold animate-pulse">{log.content}</div>
-                      ) : log.equation ? (
-                        <div className="text-amber-300 italic font-bold">{log.content || log.equation}</div>
+                      {log.equation ? (
+                        <div className="text-amber-300 italic font-bold">{log.equation}</div>
                       ) : log.model ? (
                         <div className="text-purple-400">
-                          {log.content} | {log.model.params} parameters | {log.model.layers} layers
+                          {log.content} | {log.model.params} params | {log.model.layers} layers
                         </div>
                       ) : (
                         <div className="text-gray-300">{log.content}</div>
@@ -202,7 +197,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
                     <div className="flex items-start space-x-2">
                       <span className="text-cyan-400 animate-pulse">▶</span>
                       <div className={`${
-                        currentLog.type === "motivation" ? 'text-yellow-300 font-semibold animate-pulse' :
                         currentLog.equation ? 'text-amber-300 italic font-bold' : 
                         currentLog.model ? 'text-purple-400' : 
                         'text-gray-300'
@@ -216,14 +210,14 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
               </div>
             </div>
 
-            {/* Enhanced Metrics Panel */}
+            {/* Metrics, technical tone */}
             <div className="space-y-4">
               <div className="bg-slate-950/80 rounded-lg p-4 border border-green-500/20 shadow-inner">
-                <h3 className="text-sm font-semibold text-green-400 mb-3">✨ Inspiration Metrics</h3>
+                <h3 className="text-sm font-semibold text-green-400 mb-3">Model Training Metrics</h3>
                 <div className="space-y-3">
                   <div>
                     <div className="flex justify-between text-xs text-slate-400 mb-1">
-                      <span>Enthusiasm</span>
+                      <span>Loss</span>
                       <span className="font-mono text-red-400">{currentMetrics.loss.toFixed(4)}</span>
                     </div>
                     <div className="w-full bg-slate-800 rounded-full h-2">
@@ -236,7 +230,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
                   
                   <div>
                     <div className="flex justify-between text-xs text-slate-400 mb-1">
-                      <span>Positivity</span>
+                      <span>Accuracy</span>
                       <span className="font-mono text-green-400">{(currentMetrics.accuracy * 100).toFixed(2)}%</span>
                     </div>
                     <div className="w-full bg-slate-800 rounded-full h-2">
@@ -248,40 +242,37 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
                   </div>
 
                   <div className="pt-2 border-t border-slate-700/50">
-                    <div className="text-xs text-slate-400">Ideas Generated</div>
+                    <div className="text-xs text-slate-400">Epoch</div>
                     <div className="text-lg font-mono text-cyan-400">{currentMetrics.epoch}/∞</div>
                   </div>
                 </div>
               </div>
 
               <div className="bg-slate-950/80 rounded-lg p-4 border border-purple-500/20 shadow-inner">
-                <h3 className="text-sm font-semibold text-purple-400 mb-3">🧠 Creative Engine</h3>
+                <h3 className="text-sm font-semibold text-purple-400 mb-3">System Diagnostics</h3>
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Innovation Level</span>
-                    <span className="font-mono text-green-400">MAXIMUM</span>
+                    <span className="text-slate-400">GPU Utilization</span>
+                    <span className="font-mono text-green-400">98%</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Curiosity Index</span>
-                    <span className="font-mono text-blue-400">∞%</span>
+                    <span className="text-slate-400">RAM Usage</span>
+                    <span className="font-mono text-blue-400">12.5GB</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-400">Dreams/sec</span>
-                    <span className="font-mono text-purple-400">99.9</span>
+                    <span className="text-slate-400">Latency</span>
+                    <span className="font-mono text-purple-400">3.2ms</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Enhanced Footer */}
+          {/* Professional/technical continue UI */}
           {showContinue && (
             <div className="border-t border-cyan-500/30 p-4 text-center bg-gradient-to-r from-slate-900/80 to-blue-900/80">
-              <p className="text-slate-300 text-sm">
-                <span className="text-green-400 font-mono">✨</span> Ready to embark on an incredible journey together!
-              </p>
-              <p className="text-cyan-400 mt-2 animate-bounce font-semibold">
-                🌟 {window.innerWidth < 768 ? "Tap to start this amazing adventure" : "Press ENTER to start this amazing adventure"} →
+              <p className="text-cyan-300 text-sm font-mono">
+                Simulation Complete. <span className="text-green-400">Press ENTER or tap to proceed.</span>
               </p>
             </div>
           )}
