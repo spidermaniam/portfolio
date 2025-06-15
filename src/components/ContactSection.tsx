@@ -1,5 +1,4 @@
-
-import { Mail, Linkedin, Github } from "lucide-react";
+import { Mail, Linkedin, Github, Download } from "lucide-react";
 
 const ContactSection = () => {
   const handleCardClick = (url: string, text: string) => {
@@ -29,7 +28,7 @@ const ContactSection = () => {
             </p>
 
             {/* Cards */}
-            <div className="grid md:grid-cols-3 gap-8 mb-12 stagger-animate items-stretch">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12 stagger-animate items-stretch">
               {/* Email Card */}
               <div className="scroll-animate">
                 <div
@@ -86,6 +85,25 @@ const ContactSection = () => {
                   <p className="text-muted-foreground font-mono">Check out my code</p>
                 </div>
               </div>
+              
+              {/* Resume Card */}
+              <div className="scroll-animate">
+                <div
+                  onClick={() =>
+                    window.open(
+                      "https://docs.google.com/document/d/1B7p-p_jAF7YdnB56emJ_3_40BHQ2dYgK/edit?usp=sharing&ouid=107383921946392695882&rtpof=true&sd=true",
+                      "_blank"
+                    )
+                  }
+                  className="group bg-card p-8 min-h-[260px] flex flex-col justify-between rounded-lg border border-border hover:border-foreground transition-all duration-500 cursor-pointer hover-lift halo-effect"
+                >
+                  <div className="flex items-center justify-center w-16 h-16 bg-muted rounded-full mx-auto mb-6 group-hover:bg-foreground group-hover:text-background transition-colors">
+                    <Download className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2 font-mono">Resume</h3>
+                  <p className="text-muted-foreground font-mono">Download my CV</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -95,4 +113,3 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
-

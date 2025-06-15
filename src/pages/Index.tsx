@@ -10,11 +10,81 @@ import ContactSection from "../components/ContactSection";
 import LoadingScreen from "../components/LoadingScreen";
 import CustomCursor from "../components/CustomCursor";
 import Footer from "../components/Footer";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { useToast } from "@/components/ui/use-toast";
+
+const leadFormSchema = z.object({
+  contact: z.string().min(5, {
+    message: "Please enter a valid email or phone number.",
+  }),
+});
+
+type LeadFormValues = z.infer<typeof leadFormSchema>;
+
+const ExitIntentModal = ({ isOpen, onOpenChange }: { isOpen: boolean, onOpenChange: (open: boolean) => void }) => {
+  const { toast } = useToast();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<LeadFormValues>({
+    resolver: zodResolver(leadFormSchema),
+  });
+
+  const onSubmit = (data: LeadFormValues) => {
+    console.log("Lead captured:", data);
+    // In a real application, you would send this to a backend endpoint.
+    // For now, we'll show a success message.
+    toast({
+      title: "Thank you!",
+      description: "I've received your contact info and will be in touch shortly.",
+    });
+    onOpenChange(false);
+    reset();
+  };
+    
+  return (
+    <Dialog open={isOpen} onOpenChange={onOpenChange}>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Wait! Before You Go...</DialogTitle>
+          <DialogDescription>
+            I'd love to connect. Leave your email or phone number, and I'll get in touch. No spam, I promise.
+          </DialogDescription>
+        </DialogHeader>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 py-4">
+          <div>
+            <Input
+              id="contact"
+              placeholder="email@example.com or phone number"
+              {...register("contact")}
+              className="col-span-3"
+            />
+            {errors.contact && <p className="text-red-500 text-xs mt-2">{errors.contact.message}</p>}
+          </div>
+          <DialogFooter>
+            <Button type="submit">Send Message</Button>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [isExitModalOpen, setIsExitModalOpen] = useState(false);
 
   useEffect(() => {
     // Set dark mode by default
@@ -118,6 +188,23 @@ const Index = () => {
     };
   }, [activeSection, isLoading]);
 
+  useEffect(() => {
+    if (isLoading) return;
+
+    const handleMouseOut = (e: MouseEvent) => {
+      if (e.clientY < 50 && !sessionStorage.getItem('exit-intent-shown')) {
+        setIsExitModalOpen(true);
+        sessionStorage.setItem('exit-intent-shown', 'true');
+      }
+    };
+
+    document.addEventListener('mouseout', handleMouseOut);
+
+    return () => {
+      document.removeEventListener('mouseout', handleMouseOut);
+    };
+  }, [isLoading]);
+
   const handleLoadingComplete = () => {
     setIsLoading(false);
   };
@@ -129,6 +216,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-x-hidden flex flex-col">
       <CustomCursor />
+      <ExitIntentModal isOpen={isExitModalOpen} onOpenChange={setIsExitModalOpen} />
       
       {/* Enhanced scroll progress indicator */}
       <div 
