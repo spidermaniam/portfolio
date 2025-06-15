@@ -1,6 +1,8 @@
-import { Mail, Linkedin, Github, Download } from "lucide-react";
 
-const ContactSection = () => {
+import { Mail, Linkedin, Github, Download, MessageSquare } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const ContactSection = ({ onOpenModal }: { onOpenModal: (open: boolean) => void }) => {
   const handleCardClick = (url: string, text: string) => {
     navigator.clipboard.writeText(text).catch((err) => {
       console.error("Failed to copy to clipboard:", err);
@@ -105,6 +107,17 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
+
+            <div className="mt-16">
+              <p className="text-lg text-muted-foreground mb-6 font-mono">
+                Alternatively, just want to send a quick message?
+              </p>
+              <Button onClick={() => onOpenModal(true)} size="lg" className="font-mono">
+                <MessageSquare className="mr-2 h-5 w-5" />
+                Leave a Message
+              </Button>
+            </div>
+
           </div>
         </div>
       </div>

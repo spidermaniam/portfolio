@@ -66,7 +66,7 @@ const Index = () => {
           <CertificationsSection />
         </div>
         <div className="section-fade">
-          <ContactSection />
+          <ContactSection onOpenModal={setIsExitModalOpen} />
         </div>
       </main>
       <Footer />
