@@ -9,14 +9,43 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Session } from "@supabase/supabase-js";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const Dashboard = () => {
+  const [session, setSession] = useState<Session | null>(null);
+  const navigate = useNavigate();
   const [bootCount, setBootCount] = useState<number | null>(null);
   const [entries, setEntries] = useState<any[]>([]);
   const [leads, setLeads] = useState<any[]>([]);
   const [leadsCount, setLeadsCount] = useState<number | null>(null);
 
   useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
+        navigate("/auth");
+      } else {
+        setSession(session);
+      }
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) {
+        navigate("/auth");
+      } else {
+        setSession(session);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [navigate]);
+
+  useEffect(() => {
+    if (!session) return;
+
     const fetchData = async () => {
       // Fetch boot entries
       const { count: fetchedBootCount } = await supabase
@@ -46,11 +75,25 @@ const Dashboard = () => {
     };
 
     fetchData();
-  }, []);
+  }, [session]);
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/auth");
+  };
+
+  if (!session) {
+    return null; // Or a loading spinner
+  }
 
   return (
     <div className="p-4 sm:p-6 md:p-8 text-white bg-black min-h-screen font-mono">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-6">Dashboard</h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl sm:text-3xl font-bold">Dashboard</h1>
+        <Button variant="outline" onClick={handleLogout}>
+          Logout
+        </Button>
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         <div className="bg-gray-900 p-4 rounded-lg border border-gray-700">

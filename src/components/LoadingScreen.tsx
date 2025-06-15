@@ -1,10 +1,9 @@
-
 import { useEffect, useRef, useState } from "react";
 import NeuralNetworkLoader from "@/components/NeuralNetworkLoader";
 import MetricsPanel from "@/components/MetricsPanel";
 import SystemDiagnostics from "@/components/SystemDiagnostics";
 import ConsoleDisplay from "@/components/ConsoleDisplay";
-import { supabase } from "@/lib/supabaseClient";
+import { supabase } from "@/integrations/supabase/client";
 
 export interface LoadingScreenProps {
   onLoadingComplete: () => void;
@@ -138,9 +137,9 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         setTimeout(() => {
           setLogIndex(prev => prev + 1);
           setTypedContent("");
-        }, 90);
+        }, 50); // Speed up delay between lines
       }
-    }, 7);
+    }, 1); // Speed up typing
     return () => clearInterval(typeInterval);
   }, [logIndex]);
 
