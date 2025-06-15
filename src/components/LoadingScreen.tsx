@@ -28,6 +28,9 @@ const researchLogs: LogEntry[] = [
   { type: "complete", content: "Simulation complete. Awaiting user interaction..." },
 ];
 
+const niceRandom = (base: number, spread: number, max = 1, min = 0) =>
+  Math.max(min, Math.min(base + (Math.random() - 0.5) * spread, max));
+
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   const [hasLoggedEntry, setHasLoggedEntry] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -35,19 +38,33 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   const [logIndex, setLogIndex] = useState(0);
   const [typedContent, setTypedContent] = useState("");
   const [showContinue, setShowContinue] = useState(false);
-  const [currentMetrics, setCurrentMetrics] = useState({ loss: 2.847, accuracy: 0.0, epoch: 0 });
+  
+  // New, simulated metrics
+  const [metrics, setMetrics] = useState({
+    accuracy: 0.0,
+    precision: 0.0,
+    recall: 0.0,
+    throughput: 0,
+    learningRate: 0.005,
+    stability: 0.8,
+    epoch: 0,
+  });
 
   const hiddenInputRef = useRef<HTMLInputElement | null>(null);
 
   // Simulate training metrics - faster updates (interval reduced)
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentMetrics(prev => ({
-        loss: Math.max(0.001, prev.loss * 0.90),
-        accuracy: Math.min(0.998, prev.accuracy + Math.random() * 0.12),
+      setMetrics(prev => ({
+        accuracy: Math.min(0.998, prev.accuracy + Math.random() * 0.04 + 0.02),
+        precision: Math.min(0.995, prev.precision + Math.random() * 0.04 + 0.015),
+        recall: Math.min(0.993, prev.recall + Math.random() * 0.025 + 0.01),
+        throughput: Math.min(12000, prev.throughput + Math.floor(Math.random() * 60) + 20),
+        learningRate: niceRandom(0.001, 0.001, 0.002, 0.0006),
+        stability: Math.min(0.999, prev.stability + Math.random() * 0.01),
         epoch: prev.epoch + 1
       }));
-    }, 285); // was 500ms, now much faster
+    }, 180); // even faster
     return () => clearInterval(interval);
   }, []);
 
@@ -115,9 +132,9 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         setTimeout(() => {
           setLogIndex(prev => prev + 1);
           setTypedContent("");
-        }, 120); // was 200ms; now much faster
+        }, 90); // was 200ms; now much faster
       }
-    }, 10); // was 15ms, now faster
+    }, 7); // was 15ms, now faster
     return () => clearInterval(typeInterval);
   }, [logIndex]);
 
@@ -173,7 +190,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
                 <div className="text-xs text-cyan-400 mb-3 font-mono">
                   $ ./simulate_model.sh --mode=fast --validation=on
                 </div>
-                <div className="space-y-2 font-mono text-sm h-64 overflow-hidden">
+                <div className="space-y-2 font-mono text-sm h-64 overflow-y-auto pr-2">
                   
                   {/* Previous logs */}
                   {researchLogs.slice(0, logIndex).map((log, i) => (
@@ -215,24 +232,81 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
                 <h3 className="text-sm font-semibold text-green-400 mb-3">Model Training Metrics</h3>
                 <div className="space-y-3">
                   
-                  {/* Loss REMOVED */}
-
+                  {/* Accuracy */}
                   <div>
                     <div className="flex justify-between text-xs text-slate-400 mb-1">
                       <span>Accuracy</span>
-                      <span className="font-mono text-green-400">{(currentMetrics.accuracy * 100).toFixed(2)}%</span>
+                      <span className="font-mono text-green-400">{(metrics.accuracy * 100).toFixed(2)}%</span>
                     </div>
                     <div className="w-full bg-slate-800 rounded-full h-2">
                       <div 
                         className="bg-gradient-to-r from-green-500 to-emerald-400 h-2 rounded-full transition-all duration-300 shadow-lg" 
-                        style={{ width: `${currentMetrics.accuracy * 100}%` }}
+                        style={{ width: `${metrics.accuracy * 100}%` }}
                       />
+                    </div>
+                  </div>
+                  
+                  {/* Precision */}
+                  <div>
+                    <div className="flex justify-between text-xs text-slate-400 mb-1">
+                      <span>Precision</span>
+                      <span className="font-mono text-blue-400">{(metrics.precision * 100).toFixed(2)}%</span>
+                    </div>
+                    <div className="w-full bg-slate-800 rounded-full h-2">
+                      <div
+                        className="bg-gradient-to-r from-blue-500 to-cyan-400 h-2 rounded-full transition-all duration-300 shadow-lg"
+                        style={{ width: `${metrics.precision * 100}%` }}
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Recall */}
+                  <div>
+                    <div className="flex justify-between text-xs text-slate-400 mb-1">
+                      <span>Recall</span>
+                      <span className="font-mono text-lime-400">{(metrics.recall * 100).toFixed(2)}%</span>
+                    </div>
+                    <div className="w-full bg-slate-800 rounded-full h-2">
+                      <div
+                        className="bg-gradient-to-r from-lime-400 to-green-300 h-2 rounded-full transition-all duration-300 shadow-lg"
+                        style={{ width: `${metrics.recall * 100}%` }}
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Throughput */}
+                  <div>
+                    <div className="flex justify-between text-xs text-slate-400 mb-1">
+                      <span>Throughput</span>
+                      <span className="font-mono text-cyan-400">{metrics.throughput} samples/s</span>
+                    </div>
+                    <div className="w-full bg-slate-800 rounded-full h-2">
+                      <div
+                        className="bg-gradient-to-r from-cyan-400 to-blue-400 h-2 rounded-full transition-all duration-300 shadow-lg"
+                        style={{ width: `${Math.min(metrics.throughput / 120, 1) * 100}%` }}
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Learning Rate */}
+                  <div>
+                    <div className="flex justify-between text-xs text-slate-400 mb-1">
+                      <span>Learning Rate</span>
+                      <span className="font-mono text-yellow-300">{metrics.learningRate.toFixed(4)}</span>
+                    </div>
+                  </div>
+                  
+                  {/* Stability */}
+                  <div>
+                    <div className="flex justify-between text-xs text-slate-400 mb-1">
+                      <span>Stability</span>
+                      <span className="font-mono text-purple-300">{(metrics.stability * 100).toFixed(1)}%</span>
                     </div>
                   </div>
 
                   <div className="pt-2 border-t border-slate-700/50">
                     <div className="text-xs text-slate-400">Epoch</div>
-                    <div className="text-lg font-mono text-cyan-400">{currentMetrics.epoch}/∞</div>
+                    <div className="text-lg font-mono text-cyan-400">{metrics.epoch}/∞</div>
                   </div>
                 </div>
               </div>
