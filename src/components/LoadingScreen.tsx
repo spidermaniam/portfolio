@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from "react";
 import NeuralNetworkLoader from "@/components/NeuralNetworkLoader";
 import MetricsPanel from "@/components/MetricsPanel";
@@ -19,15 +20,21 @@ interface LogEntry {
 
 const researchLogs: LogEntry[] = [
   { type: "init", content: "Initializing runtime environment..." },
+  { type: "init", content: "Bootstrapping quantum-entangled processors..." },
   { type: "dataset", content: "Loading dataset: schema verified | records: 1,048,576" },
+  { type: "dataset", content: "Data stream integrity: 100% | No anomalies detected." },
   { type: "model", content: "Compiling neural architecture: 24 layers | parameters: 48.2M", model: { params: "48.2M", layers: 24 } },
   { type: "equation", equation: "forward_pass(x) = activation(weights × x + bias)" },
   { type: "training", content: "Tensor allocation: complete | Batch size: 128 | Optimizer: Adam" },
+  { type: "training", content: "Beginning stochastic gradient descent..." },
   { type: "validation", content: "Running validation checks | Data augmentation: enabled" },
   { type: "equation", equation: "performance = Σ(target - prediction)² / n" },
   { type: "training", content: "Epochs: 1/∞ | Gradient descent in progress..." },
+  { type: "training", content: "Analyzing loss curve | Derivative approaching zero." },
   { type: "training", content: "Computing predictions | Evaluating inference latency..." },
+  { type: "validation", content: "Backpropagating error gradients..." },
   { type: "validation", content: "Verification: accuracy threshold achieved | Model stable" },
+  { type: "motivation", content: "The only true wisdom is in knowing you know nothing." },
   { type: "complete", content: "Simulation complete. Awaiting user interaction..." },
 ];
 

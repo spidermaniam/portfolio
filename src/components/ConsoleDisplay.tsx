@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 interface LogEntry {
@@ -33,6 +34,8 @@ const ConsoleDisplay: React.FC<ConsoleDisplayProps> = ({ logs, currentLogIndex, 
               <div className="text-white/80 break-words">
                 {log.content} | {log.model.params} params | {log.model.layers} layers
               </div>
+            ) : log.type === 'motivation' ? (
+              <div className="text-cyan-400 italic break-words">{log.content}</div>
             ) : (
               <div className="text-white/70 break-words">{log.content}</div>
             )}
@@ -46,6 +49,7 @@ const ConsoleDisplay: React.FC<ConsoleDisplayProps> = ({ logs, currentLogIndex, 
             <div className={`break-words ${
               currentLog.equation ? 'text-white/90 italic font-bold' : 
               currentLog.model ? 'text-white/80' : 
+              currentLog.type === 'motivation' ? 'text-cyan-400 italic' :
               'text-white/70'
             }`}>
               {typedContent}
@@ -59,3 +63,4 @@ const ConsoleDisplay: React.FC<ConsoleDisplayProps> = ({ logs, currentLogIndex, 
 };
 
 export default ConsoleDisplay;
+
