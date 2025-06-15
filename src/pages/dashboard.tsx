@@ -47,29 +47,34 @@ const Dashboard = () => {
     if (!session) return;
 
     const fetchData = async () => {
-      // Fetch boot entries
+      // Fetch total boot entries count
       const { count: fetchedBootCount } = await supabase
         .from("boot_entries")
         .select("*", { count: "exact", head: true });
       setBootCount(fetchedBootCount ?? 0);
 
+      // Fetch recent boot entries (visits, no contact info)
       const { data: entriesData } = await supabase
         .from("boot_entries")
         .select("*")
-        .order("created_at", { ascending: false })
+        .is("email_or_alias", null)
+        .order("timestamp", { ascending: false })
         .limit(10);
       setEntries(entriesData ?? []);
 
-      // Fetch leads
+      // Fetch leads count
       const { count: fetchedLeadsCount } = await supabase
-        .from("leads")
-        .select("*", { count: "exact", head: true });
+        .from("boot_entries")
+        .select("id", { count: "exact", head: true })
+        .not("email_or_alias", "is", null);
       setLeadsCount(fetchedLeadsCount ?? 0);
 
+      // Fetch recent leads
       const { data: leadsData } = await supabase
-        .from("leads")
+        .from("boot_entries")
         .select("*")
-        .order("created_at", { ascending: false })
+        .not("email_or_alias", "is", null)
+        .order("timestamp", { ascending: false })
         .limit(10);
       setLeads(leadsData ?? []);
     };
@@ -141,13 +146,15 @@ const Dashboard = () => {
                 <TableRow className="hover:bg-gray-800/50 border-b-gray-700">
                   <TableHead className="text-white">Timestamp</TableHead>
                   <TableHead className="text-white">Contact Info</TableHead>
+                  <TableHead className="text-white">Message</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {leads.map((lead) => (
                   <TableRow key={lead.id} className="hover:bg-gray-800/50 border-b-0">
-                    <TableCell>{new Date(lead.created_at).toLocaleString()}</TableCell>
-                    <TableCell>{lead.contact_info}</TableCell>
+                    <TableCell>{new Date(lead.timestamp).toLocaleString()}</TableCell>
+                    <TableCell>{lead.email_or_alias}</TableCell>
+                    <TableCell className="max-w-xs truncate">{lead.message ?? "—"}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

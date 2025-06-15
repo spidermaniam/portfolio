@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,9 +25,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { Sparkles } from "lucide-react";
 
 const leadFormSchema = z.object({
-  contact: z.string().min(5, {
+  email_or_alias: z.string().min(5, {
     message: "Please enter a valid email or phone number.",
   }),
+  message: z.string().optional(),
 });
 
 type LeadFormValues = z.infer<typeof leadFormSchema>;
@@ -36,15 +38,20 @@ export const ExitIntentModal = ({ isOpen, onOpenChange }: { isOpen: boolean, onO
   const form = useForm<LeadFormValues>({
     resolver: zodResolver(leadFormSchema),
     defaultValues: {
-      contact: "",
+      email_or_alias: "",
+      message: "",
     },
   });
 
   const onSubmit = async (data: LeadFormValues) => {
     try {
       const { error } = await supabase
-        .from('leads')
-        .insert({ contact_info: data.contact });
+        .from('boot_entries')
+        .insert({
+          email_or_alias: data.email_or_alias,
+          message: data.message,
+          timestamp: new Date().toISOString(),
+        });
 
       if (error) {
         throw error;
@@ -75,22 +82,39 @@ export const ExitIntentModal = ({ isOpen, onOpenChange }: { isOpen: boolean, onO
           </div>
           <DialogTitle className="text-center text-2xl">Wait! Before You Go...</DialogTitle>
           <DialogDescription className="text-center">
-            I'd love to connect. Leave your email or phone number, and I'll get in touch. No spam, I promise.
+            I'd love to connect. Leave your contact info and an optional message, and I'll get in touch. No spam, I promise.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 pt-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 pt-4">
             <FormField
               control={form.control}
-              name="contact"
+              name="email_or_alias"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="sr-only">Contact</FormLabel>
+                  <FormLabel className="sr-only">Contact Info</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="email@example.com or phone number"
                       {...field}
                       className="text-center"
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="sr-only">Message</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="Optional: Leave a message..."
+                      className="resize-none text-center"
+                      {...field}
                     />
                   </FormControl>
                   <FormMessage />

@@ -16,6 +16,7 @@ export type Database = {
           id: string
           ip_address: string | null
           location: string | null
+          message: string | null
           platform: string | null
           timestamp: string
           touch_points: string | null
@@ -27,6 +28,7 @@ export type Database = {
           id?: string
           ip_address?: string | null
           location?: string | null
+          message?: string | null
           platform?: string | null
           timestamp: string
           touch_points?: string | null
@@ -38,28 +40,11 @@ export type Database = {
           id?: string
           ip_address?: string | null
           location?: string | null
+          message?: string | null
           platform?: string | null
           timestamp?: string
           touch_points?: string | null
           user_agent?: string | null
-        }
-        Relationships: []
-      }
-      leads: {
-        Row: {
-          contact_info: string
-          created_at: string
-          id: string
-        }
-        Insert: {
-          contact_info: string
-          created_at?: string
-          id?: string
-        }
-        Update: {
-          contact_info?: string
-          created_at?: string
-          id?: string
         }
         Relationships: []
       }
