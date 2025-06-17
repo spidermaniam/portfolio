@@ -5,6 +5,7 @@ import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
 import ExperienceSection from "../components/ExperienceSection";
 import ProjectsSection from "../components/ProjectsSection";
+import TestimonialsSection from "../components/TestimonialsSection";
 import SkillsSection from "../components/SkillsSection";
 import CertificationsSection from "../components/CertificationsSection";
 import ContactSection from "../components/ContactSection";
@@ -58,6 +59,9 @@ const Index = () => {
         </div>
         <div className="section-fade">
           <ProjectsSection />
+        </div>
+        <div className="section-fade">
+          <TestimonialsSection />
         </div>
         <div className="section-fade">
           <SkillsSection />
