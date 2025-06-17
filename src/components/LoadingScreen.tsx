@@ -43,12 +43,12 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   
   const [metrics, setMetrics] = useState({
     accuracy: 0.0,
-    precision: 0.0,
-    recall: 0.0,
-    throughput: 0,
-    learningRate: 0.005,
-    stability: 0.8,
-    epoch: 0,
+    // precision: 0.0, // Removed
+    // recall: 0.0, // Removed
+    // throughput: 0, // Removed
+    // learningRate: 0.005, // Removed
+    // stability: 0.8, // Removed
+    // epoch: 0, // Removed
     projectsCompleted: 0,
     clientSatisfaction: 0.95, // Initial value for 95%
     linesOfCode: 0,
@@ -60,12 +60,12 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     const interval = setInterval(() => {
       setMetrics(prev => ({
         accuracy: Math.min(0.998, prev.accuracy + Math.random() * 0.04 + 0.02),
-        precision: Math.min(0.995, prev.precision + Math.random() * 0.04 + 0.015),
-        recall: Math.min(0.993, prev.recall + Math.random() * 0.025 + 0.01),
-        throughput: Math.min(12000, prev.throughput + Math.floor(Math.random() * 60) + 20),
-        learningRate: niceRandom(0.001, 0.001, 0.002, 0.0006),
-        stability: Math.min(0.999, prev.stability + Math.random() * 0.01),
-        epoch: prev.epoch + 1,
+        // precision: Math.min(0.995, prev.precision + Math.random() * 0.04 + 0.015), // Removed
+        // recall: Math.min(0.993, prev.recall + Math.random() * 0.025 + 0.01), // Removed
+        // throughput: Math.min(12000, prev.throughput + Math.floor(Math.random() * 60) + 20), // Removed
+        // learningRate: niceRandom(0.001, 0.001, 0.002, 0.0006), // Removed
+        // stability: Math.min(0.999, prev.stability + Math.random() * 0.01), // Removed
+        // epoch: prev.epoch + 1, // Removed
         projectsCompleted: Math.min(10, prev.projectsCompleted + 1), // Cap at 10 for loading
         clientSatisfaction: niceRandom(0.97, 0.02, 0.99, 0.95), // Fluctuates between 95% and 99%
         linesOfCode: Math.min(1000000, prev.linesOfCode + Math.floor(Math.random() * 5000) + 1000), // Cap at 1M for loading
