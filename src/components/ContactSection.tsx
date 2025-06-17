@@ -11,20 +11,20 @@ const ContactSection = ({ onOpenModal }: { onOpenModal: (open: boolean) => void 
   };
 
   return (
-    <section id="contact" className="section-padding relative pb-16">
+    <section id="contact" className="section-padding relative pb-16 bg-section-contact-bg text-section-contact-text-primary">
       {/* Halo background */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-foreground rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-section-contact-accent rounded-full filter blur-3xl animate-pulse"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="scroll-animate text-reveal halo-effect">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-16 font-mono">
-            Get In <span className="text-foreground">Touch</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-16 font-mono text-section-contact-text-primary">
+            Get In <span className="text-section-contact-accent">Touch</span>
           </h2>
 
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-xl text-muted-foreground mb-12 leading-relaxed font-mono">
+            <p className="text-xl text-section-contact-text-secondary mb-12 leading-relaxed font-mono">
               I'm always interested in hearing about new opportunities, interesting projects, 
               or just having a chat about technology and software development. Feel free to reach out!
             </p>
@@ -40,13 +40,13 @@ const ContactSection = ({ onOpenModal }: { onOpenModal: (open: boolean) => void 
                       "dhruvpuri00766@gmail.com"
                     )
                   }
-                  className="group bg-card p-8 min-h-[260px] flex flex-col justify-between rounded-lg border border-border hover:border-foreground transition-all duration-500 cursor-pointer hover-lift halo-effect"
+                  className="group bg-section-contact-card-bg text-section-contact-card-foreground p-8 min-h-[260px] flex flex-col justify-between rounded-lg border border-section-contact-border hover:border-section-contact-accent transition-all duration-500 cursor-pointer hover-lift halo-effect"
                 >
-                  <div className="flex items-center justify-center w-16 h-16 bg-muted rounded-full mx-auto mb-6 group-hover:bg-foreground group-hover:text-background transition-colors">
+                  <div className="flex items-center justify-center w-16 h-16 bg-section-contact-accent/10 text-section-contact-accent rounded-full mx-auto mb-6 group-hover:bg-section-contact-accent group-hover:text-section-contact-accent-foreground transition-colors">
                     <Mail className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2 font-mono">Email</h3>
-                  <p className="text-muted-foreground font-mono">Let's discuss your project</p>
+                  <p className="text-section-contact-text-secondary font-mono">Let's discuss your project</p>
                 </div>
               </div>
 
@@ -59,13 +59,13 @@ const ContactSection = ({ onOpenModal }: { onOpenModal: (open: boolean) => void 
                       "https://www.linkedin.com/in/dhruv-puri-c0d3r/"
                     )
                   }
-                  className="group bg-card p-8 min-h-[260px] flex flex-col justify-between rounded-lg border border-border hover:border-foreground transition-all duration-500 cursor-pointer hover-lift halo-effect"
+                  className="group bg-section-contact-card-bg text-section-contact-card-foreground p-8 min-h-[260px] flex flex-col justify-between rounded-lg border border-section-contact-border hover:border-section-contact-accent transition-all duration-500 cursor-pointer hover-lift halo-effect"
                 >
-                  <div className="flex items-center justify-center w-16 h-16 bg-muted rounded-full mx-auto mb-6 group-hover:bg-foreground group-hover:text-background transition-colors">
+                  <div className="flex items-center justify-center w-16 h-16 bg-section-contact-accent/10 text-section-contact-accent rounded-full mx-auto mb-6 group-hover:bg-section-contact-accent group-hover:text-section-contact-accent-foreground transition-colors">
                     <Linkedin className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2 font-mono">LinkedIn</h3>
-                  <p className="text-muted-foreground font-mono">Connect with me professionally</p>
+                  <p className="text-section-contact-text-secondary font-mono">Connect with me professionally</p>
                 </div>
               </div>
 
@@ -78,13 +78,13 @@ const ContactSection = ({ onOpenModal }: { onOpenModal: (open: boolean) => void 
                       "https://github.com/dhruvpuri"
                     )
                   }
-                  className="group bg-card p-8 min-h-[260px] flex flex-col justify-between rounded-lg border border-border hover:border-foreground transition-all duration-500 cursor-pointer hover-lift halo-effect"
+                  className="group bg-section-contact-card-bg text-section-contact-card-foreground p-8 min-h-[260px] flex flex-col justify-between rounded-lg border border-section-contact-border hover:border-section-contact-accent transition-all duration-500 cursor-pointer hover-lift halo-effect"
                 >
-                  <div className="flex items-center justify-center w-16 h-16 bg-muted rounded-full mx-auto mb-6 group-hover:bg-foreground group-hover:text-background transition-colors">
+                  <div className="flex items-center justify-center w-16 h-16 bg-section-contact-accent/10 text-section-contact-accent rounded-full mx-auto mb-6 group-hover:bg-section-contact-accent group-hover:text-section-contact-accent-foreground transition-colors">
                     <Github className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2 font-mono">GitHub</h3>
-                  <p className="text-muted-foreground font-mono">Check out my code</p>
+                  <p className="text-section-contact-text-secondary font-mono">Check out my code</p>
                 </div>
               </div>
               
@@ -97,22 +97,26 @@ const ContactSection = ({ onOpenModal }: { onOpenModal: (open: boolean) => void 
                       "_blank"
                     )
                   }
-                  className="group bg-card p-8 min-h-[260px] flex flex-col justify-between rounded-lg border border-border hover:border-foreground transition-all duration-500 cursor-pointer hover-lift halo-effect"
+                  className="group bg-section-contact-card-bg text-section-contact-card-foreground p-8 min-h-[260px] flex flex-col justify-between rounded-lg border border-section-contact-border hover:border-section-contact-accent transition-all duration-500 cursor-pointer hover-lift halo-effect"
                 >
-                  <div className="flex items-center justify-center w-16 h-16 bg-muted rounded-full mx-auto mb-6 group-hover:bg-foreground group-hover:text-background transition-colors">
+                  <div className="flex items-center justify-center w-16 h-16 bg-section-contact-accent/10 text-section-contact-accent rounded-full mx-auto mb-6 group-hover:bg-section-contact-accent group-hover:text-section-contact-accent-foreground transition-colors">
                     <Download className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2 font-mono">Resume</h3>
-                  <p className="text-muted-foreground font-mono">Download my CV</p>
+                  <p className="text-section-contact-text-secondary font-mono">Download my CV</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-16">
-              <p className="text-lg text-muted-foreground mb-6 font-mono">
+              <p className="text-lg text-section-contact-text-secondary mb-6 font-mono">
                 Alternatively, just want to send a quick message?
               </p>
-              <Button onClick={() => onOpenModal(true)} size="lg" className="font-mono">
+              <Button
+                onClick={() => onOpenModal(true)}
+                size="lg"
+                className="font-mono bg-section-contact-accent text-section-contact-accent-foreground hover:bg-section-contact-accent/90"
+              >
                 <MessageSquare className="mr-2 h-5 w-5" />
                 Leave a Message
               </Button>

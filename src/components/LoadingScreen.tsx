@@ -39,6 +39,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
   const [logIndex, setLogIndex] = useState(0);
   const [typedContent, setTypedContent] = useState("");
   const [showContinue, setShowContinue] = useState(false);
+  const autoProceedTimerRef = useRef<NodeJS.Timeout | null>(null);
   
   const [metrics, setMetrics] = useState({
     accuracy: 0.0,
@@ -48,6 +49,9 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
     learningRate: 0.005,
     stability: 0.8,
     epoch: 0,
+    projectsCompleted: 0,
+    clientSatisfaction: 0.95, // Initial value for 95%
+    linesOfCode: 0,
   });
 
   const hiddenInputRef = useRef<HTMLInputElement | null>(null);
@@ -61,16 +65,22 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         throughput: Math.min(12000, prev.throughput + Math.floor(Math.random() * 60) + 20),
         learningRate: niceRandom(0.001, 0.001, 0.002, 0.0006),
         stability: Math.min(0.999, prev.stability + Math.random() * 0.01),
-        epoch: prev.epoch + 1
+        epoch: prev.epoch + 1,
+        projectsCompleted: Math.min(10, prev.projectsCompleted + 1), // Cap at 10 for loading
+        clientSatisfaction: niceRandom(0.97, 0.02, 0.99, 0.95), // Fluctuates between 95% and 99%
+        linesOfCode: Math.min(1000000, prev.linesOfCode + Math.floor(Math.random() * 5000) + 1000), // Cap at 1M for loading
       }));
     }, 180);
     return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
-    if (!showContinue) return;
-
     const handleContinue = async () => {
+      if (autoProceedTimerRef.current) {
+        clearTimeout(autoProceedTimerRef.current);
+        autoProceedTimerRef.current = null;
+      }
+
       if (hasLoggedEntry) return;
       setHasLoggedEntry(true);
 
@@ -98,11 +108,25 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
 
     window.addEventListener("keydown", keyListener);
     window.addEventListener("pointerdown", pointerListener);
+
+    if (showContinue && !hasLoggedEntry) {
+      autoProceedTimerRef.current = setTimeout(() => {
+        // Check again in case component unmounted or manual proceed happened
+        if (!hasLoggedEntry && document.visibilityState === 'visible') {
+          handleContinue();
+        }
+      }, 3500);
+    }
+
     return () => {
       window.removeEventListener("keydown", keyListener);
       window.removeEventListener("pointerdown", pointerListener);
+      if (autoProceedTimerRef.current) {
+        clearTimeout(autoProceedTimerRef.current);
+        autoProceedTimerRef.current = null;
+      }
     };
-  }, [showContinue, hasLoggedEntry, onLoadingComplete]);
+  }, [showContinue, hasLoggedEntry, onLoadingComplete]); // handleContinue is now stable due to useCallback or if defined outside/above
 
   useEffect(() => {
     if (showContinue) hiddenInputRef.current?.focus();

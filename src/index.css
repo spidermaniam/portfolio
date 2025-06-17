@@ -32,8 +32,87 @@
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
-
     --radius: 0.5rem;
+
+    /* Section: Hero */
+    --section-hero-bg: 0 0% 98%;
+    --section-hero-text-primary: 0 0% 9%;
+    --section-hero-text-secondary: 0 0% 30%;
+    --section-hero-accent: 260 70% 60%;
+    --section-hero-accent-foreground: 0 0% 100%;
+    --section-hero-border: 0 0% 90%;
+    --section-hero-card-bg: 0 0% 100%;
+    --section-hero-card-foreground: 0 0% 9%;
+
+    /* Section: About */
+    --section-about-bg: 30 30% 96%; /* Light beige/off-white */
+    --section-about-text-primary: 25 20% 15%; /* Dark brown */
+    --section-about-text-secondary: 25 15% 35%;
+    --section-about-accent: 120 30% 45%; /* Muted green */
+    --section-about-accent-foreground: 0 0% 100%;
+    --section-about-border: 30 20% 88%;
+    --section-about-card-bg: 30 30% 99%;
+    --section-about-card-foreground: 25 20% 15%;
+
+    /* Section: Skills */
+    --section-skills-bg: 200 20% 95%; /* Very light blue */
+    --section-skills-text-primary: 210 30% 10%; /* Dark blue */
+    --section-skills-text-secondary: 210 20% 30%;
+    --section-skills-accent: 190 70% 50%; /* Cyan */
+    --section-skills-accent-foreground: 0 0% 0%; /* Black text on cyan */
+    --section-skills-border: 200 20% 85%;
+    --section-skills-card-bg: 200 20% 99%;
+    --section-skills-card-foreground: 210 30% 10%;
+
+    /* Section: Projects */
+    --section-projects-bg: 0 0% 97%; /* Light gray */
+    --section-projects-text-primary: 0 0% 12%;
+    --section-projects-text-secondary: 0 0% 35%;
+    --section-projects-accent: 330 65% 60%; /* Muted magenta/rose */
+    --section-projects-accent-foreground: 0 0% 100%;
+    --section-projects-border: 0 0% 88%;
+    --section-projects-card-bg: 0 0% 100%;
+    --section-projects-card-foreground: 0 0% 12%;
+
+    /* Section: Certifications */
+    --section-certifications-bg: 50 40% 94%; /* Light gold/cream */
+    --section-certifications-text-primary: 40 30% 15%; /* Dark brownish-gold */
+    --section-certifications-text-secondary: 40 25% 35%;
+    --section-certifications-accent: 35 70% 55%; /* Gold/Orange */
+    --section-certifications-accent-foreground: 0 0% 0%; /* Black text on gold */
+    --section-certifications-border: 50 30% 86%;
+    --section-certifications-card-bg: 50 40% 98%;
+    --section-certifications-card-foreground: 40 30% 15%;
+
+    /* Section: Experience */
+    --section-experience-bg: 220 25% 96%; /* Light lavender/blue */
+    --section-experience-text-primary: 220 20% 10%; /* Dark grayish blue */
+    --section-experience-text-secondary: 220 15% 30%;
+    --section-experience-accent: 240 50% 65%; /* Indigo */
+    --section-experience-accent-foreground: 0 0% 100%;
+    --section-experience-border: 220 20% 88%;
+    --section-experience-card-bg: 220 25% 99%;
+    --section-experience-card-foreground: 220 20% 10%;
+
+    /* Section: Testimonials */
+    --section-testimonials-bg: 25 60% 95%; /* Warm light peach */
+    --section-testimonials-text-primary: 20 40% 20%; /* Warm dark brown */
+    --section-testimonials-text-secondary: 20 30% 40%;
+    --section-testimonials-accent: 0 60% 60%; /* Coral red */
+    --section-testimonials-accent-foreground: 0 0% 100%;
+    --section-testimonials-border: 25 50% 88%;
+    --section-testimonials-card-bg: 0 0% 100%; /* White cards for contrast */
+    --section-testimonials-card-foreground: 20 40% 20%;
+
+    /* Section: Contact */
+    --section-contact-bg: 0 0% 94%; /* Neutral light gray */
+    --section-contact-text-primary: 0 0% 8%;
+    --section-contact-text-secondary: 0 0% 28%;
+    --section-contact-accent: 210 70% 55%; /* Professional blue */
+    --section-contact-accent-foreground: 0 0% 100%;
+    --section-contact-border: 0 0% 85%;
+    --section-contact-card-bg: 0 0% 99%;
+    --section-contact-card-foreground: 0 0% 8%;
   }
 
   .dark {
@@ -64,6 +143,86 @@
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
+
+    /* Section: Hero */
+    --section-hero-bg: 0 0% 12%;
+    --section-hero-text-primary: 0 0% 98%;
+    --section-hero-text-secondary: 0 0% 70%;
+    --section-hero-accent: 260 70% 65%;
+    --section-hero-accent-foreground: 0 0% 100%;
+    --section-hero-border: 0 0% 20%;
+    --section-hero-card-bg: 0 0% 15%;
+    --section-hero-card-foreground: 0 0% 98%;
+
+    /* Section: About */
+    --section-about-bg: 30 15% 10%; /* Dark, slightly warm gray */
+    --section-about-text-primary: 30 10% 90%;
+    --section-about-text-secondary: 30 8% 70%;
+    --section-about-accent: 120 30% 55%; /* Brighter muted green */
+    --section-about-accent-foreground: 0 0% 0%; /* Black text for contrast */
+    --section-about-border: 30 10% 20%;
+    --section-about-card-bg: 30 15% 13%;
+    --section-about-card-foreground: 30 10% 90%;
+
+    /* Section: Skills */
+    --section-skills-bg: 200 20% 8%; /* Dark, slightly cool gray */
+    --section-skills-text-primary: 200 15% 92%;
+    --section-skills-text-secondary: 200 10% 65%;
+    --section-skills-accent: 190 70% 60%; /* Brighter cyan */
+    --section-skills-accent-foreground: 0 0% 0%;
+    --section-skills-border: 200 15% 18%;
+    --section-skills-card-bg: 200 20% 11%;
+    --section-skills-card-foreground: 200 15% 92%;
+
+    /* Section: Projects */
+    --section-projects-bg: 0 0% 10%; /* Dark gray */
+    --section-projects-text-primary: 0 0% 95%;
+    --section-projects-text-secondary: 0 0% 68%;
+    --section-projects-accent: 330 65% 70%; /* Brighter rose */
+    --section-projects-accent-foreground: 0 0% 0%;
+    --section-projects-border: 0 0% 18%;
+    --section-projects-card-bg: 0 0% 13%;
+    --section-projects-card-foreground: 0 0% 95%;
+
+    /* Section: Certifications */
+    --section-certifications-bg: 50 20% 9%; /* Dark, warm gold/brown */
+    --section-certifications-text-primary: 50 15% 90%;
+    --section-certifications-text-secondary: 50 10% 60%;
+    --section-certifications-accent: 35 70% 65%; /* Brighter gold */
+    --section-certifications-accent-foreground: 0 0% 0%;
+    --section-certifications-border: 50 15% 19%;
+    --section-certifications-card-bg: 50 20% 12%;
+    --section-certifications-card-foreground: 50 15% 90%;
+
+    /* Section: Experience */
+    --section-experience-bg: 220 15% 11%; /* Dark, cool lavender */
+    --section-experience-text-primary: 220 10% 92%;
+    --section-experience-text-secondary: 220 8% 68%;
+    --section-experience-accent: 240 50% 70%; /* Brighter indigo */
+    --section-experience-accent-foreground: 0 0% 100%;
+    --section-experience-border: 220 10% 21%;
+    --section-experience-card-bg: 220 15% 14%;
+    --section-experience-card-foreground: 220 10% 92%;
+
+    /* Section: Testimonials */
+    --section-testimonials-bg: 25 30% 10%; /* Dark, warm peach/brown */
+    --section-testimonials-text-primary: 25 20% 88%;
+    --section-testimonials-text-secondary: 25 15% 65%;
+    --section-testimonials-accent: 0 60% 70%; /* Brighter coral */
+    --section-testimonials-accent-foreground: 0 0% 0%;
+    --section-testimonials-border: 25 20% 20%;
+    --section-testimonials-card-bg: 25 30% 13%; /* Slightly lighter card for depth */
+    --section-testimonials-card-foreground: 25 20% 88%;
+
+    /* Section: Contact */
+    --section-contact-bg: 0 0% 8%; /* Dark neutral gray */
+    --section-contact-text-primary: 0 0% 92%;
+    --section-contact-text-secondary: 0 0% 65%;
+    --section-contact-accent: 210 70% 65%; /* Brighter professional blue */
+    --section-contact-accent-foreground: 0 0% 100%;
+    --section-contact-border: 0 0% 18%;
+    --section-contact-card-bg: 0 0% 11%;
+    --section-contact-card-foreground: 0 0% 92%;
   }
 }
 

@@ -44,18 +44,18 @@ const ExperienceSection = () => {
   ];
 
   return (
-    <section id="experience" className="relative min-h-screen overflow-hidden">
+    <section id="experience" className="relative min-h-screen overflow-hidden bg-section-experience-bg text-section-experience-text-primary">
       {/* Enhanced background with purple halo effect */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500 rounded-full filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-blue-500 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-section-experience-accent rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-section-experience-accent/70 rounded-full filter blur-3xl animate-pulse"></div>
       </div>
 
       {/* Section Header */}
-      <div className="sticky top-0 bg-background z-10 py-20">
+      <div className="sticky top-0 bg-section-experience-bg z-10 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-6xl lg:text-8xl font-bold text-center font-mono">
-            Professional <span className="text-foreground">Experience</span>
+          <h2 className="text-6xl lg:text-8xl font-bold text-center font-mono text-section-experience-text-primary">
+            Professional <span className="text-section-experience-accent">Experience</span>
           </h2>
         </div>
       </div>
@@ -65,25 +65,25 @@ const ExperienceSection = () => {
         {experiences.map((exp, index) => (
           <div
             key={index}
-            className="sticky bg-background"
+            className="sticky bg-section-experience-bg" // Ensures card background matches section as it sticks
             style={{ 
               top: `${80 + index * 40}px`,
               zIndex: experiences.length - index
             }}
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-              <div className="bg-card border border-border rounded-lg p-8 hover:shadow-xl transition-all duration-500 group hover-lift halo-effect">
+              <div className="bg-section-experience-card-bg text-section-experience-card-foreground border border-section-experience-border rounded-lg p-8 hover:shadow-xl transition-all duration-500 group hover-lift halo-effect">
                 <div className="grid lg:grid-cols-2 gap-8 items-start">
                   {/* Left side - Job info */}
                   <div>
-                    <span className="inline-block px-4 py-2 bg-muted text-muted-foreground rounded-full text-sm font-medium mb-4 font-mono">
+                    <span className="inline-block px-4 py-2 bg-section-experience-accent/10 text-section-experience-accent rounded-full text-sm font-medium mb-4 font-mono">
                       {exp.period}
                     </span>
-                    <h3 className="text-3xl font-bold mb-2 group-hover:text-foreground transition-colors font-mono">
+                    <h3 className="text-3xl font-bold mb-2 group-hover:text-section-experience-accent transition-colors font-mono">
                       {exp.title}
                     </h3>
-                    <p className="text-xl text-foreground font-medium mb-2 font-mono">{exp.company}</p>
-                    <p className="text-muted-foreground font-mono">{exp.location}</p>
+                    <p className="text-xl text-section-experience-card-foreground font-medium mb-2 font-mono">{exp.company}</p>
+                    <p className="text-section-experience-text-secondary font-mono">{exp.location}</p>
                   </div>
 
                   {/* Right side - Achievements */}
@@ -91,8 +91,8 @@ const ExperienceSection = () => {
                     <ul className="space-y-4">
                       {exp.achievements.map((achievement, achIndex) => (
                         <li key={achIndex} className="flex items-start group/item">
-                          <span className="w-2 h-2 bg-foreground rounded-full mr-4 mt-2 flex-shrink-0 group-hover/item:scale-125 transition-all duration-300"></span>
-                          <span className="text-muted-foreground leading-relaxed group-hover/item:text-foreground transition-colors duration-300 font-mono text-sm">
+                          <span className="w-2 h-2 bg-section-experience-accent rounded-full mr-4 mt-2 flex-shrink-0 group-hover/item:scale-125 transition-all duration-300"></span>
+                          <span className="text-section-experience-text-secondary leading-relaxed group-hover/item:text-section-experience-text-primary transition-colors duration-300 font-mono text-sm">
                             {achievement}
                           </span>
                         </li>
