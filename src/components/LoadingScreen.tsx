@@ -115,7 +115,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
         if (!hasLoggedEntry && document.visibilityState === 'visible') {
           handleContinue();
         }
-      }, 3500);
+      }, 10000); // Changed from 3500 to 10000
     }
 
     return () => {
