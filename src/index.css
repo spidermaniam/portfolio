@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -259,6 +258,32 @@
 
   .section-padding {
     @apply py-20 lg:py-32;
+  }
+
+  /* Marquee Animation Styles */
+  .marquee-wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .marquee-content {
+    display: flex;
+    animation: marquee 60s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-content:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   /* Enhanced Skeleton Hand Animation - 3.27s Duration */

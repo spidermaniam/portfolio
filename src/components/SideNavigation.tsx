@@ -1,7 +1,6 @@
-
 import React from 'react';
 
-const SECTIONS = ["home", "about", "experience", "projects", "skills", "certifications", "contact"];
+const SECTIONS = ["home", "about", "experience", "projects", "skills", "testimonials", "certifications", "contact"];
 
 interface SideNavigationProps {
   activeSection: string;
